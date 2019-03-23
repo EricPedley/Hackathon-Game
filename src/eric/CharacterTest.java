@@ -24,7 +24,7 @@ public class CharacterTest extends PApplet {
 		 PImage rightImage = loadImage("Images"+fS+"Characters"+fS+"Main Character"+fS+"Main Character Right.gif");
 
 		r = new Room(this);
-		h = new Hero(100,100,leftImage,rightImage,r);
+		h = new Hero(0,0,leftImage,rightImage,r);
 	}
 	
 	public void draw() {
