@@ -11,13 +11,18 @@ import rishab.Room;
 
 public class CharacterTest extends PApplet {
 	static String fS = System.getProperty("file.separator");
-	private PImage leftImage = new PApplet().loadImage("Images"+fS+"Characters"+fS+"Main Character"+"fS"+"Main Character Left.gif");
-	private PImage rightImage = new PApplet().loadImage("Images"+fS+"Characters"+fS+"Main Character"+"fS"+"Main Character Right.gif");
 	Hero h;
 	Room r;
+	public void settings() {
+		size(400,400);
+		
+	}
+	
 	public void setup() {//character image is 14x36 pixels
-		PImage img = loadImage("Images"+fS+"Characters"+fS+"Main Character"+fS+"Main Character Left.gif");
-		r=new Room();
+		 PImage leftImage = loadImage("Images"+fS+"Characters"+fS+"Main Character"+fS+"Main Character Left.gif");
+		 PImage rightImage = loadImage("Images"+fS+"Characters"+fS+"Main Character"+fS+"Main Character Right.gif");
+
+		r = new Room();
 		h = new Hero(100,100,leftImage,rightImage,r);
 	}
 	
