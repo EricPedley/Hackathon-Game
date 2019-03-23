@@ -5,6 +5,7 @@ import Phys2D.Circle;
 import Phys2D.Rectangle;
 import processing.core.PApplet;
 import processing.core.PImage;
+import rishab.Room;
 
 
 public class Character {
@@ -15,7 +16,8 @@ public class Character {
 	private double speed;
 	private Room environment;
 	
-	public Character(double x, double y, PImage img) {
+	public Character(double x, double y, String imageFilePath) {
+		img = new PApplet().loadImage(imageFilePath);
 		hitbox = new Rectangle(x,y,img.width,img.height);
 		hp=100;
 	}
@@ -33,12 +35,12 @@ public class Character {
 	
 	public void moveRight() {
 		direction=1;
-		int tileX = (int)(hitbox.x+hitbox.width)/enironment.TILE_SIZE;
+		int tileX = (int)(hitbox.x+hitbox.width)/environment.TILE_SIZE;
 		int tileY1 = (int)(hitbox.y)/environment.TILE_SIZE;
 		int tileY2 = (int)(hitbox.y+hitbox.height)/environment.TILE_SIZE;
-		if(environment.tileAt(tileX,tileY1) instanceof SolidTile)
+		if(environment.tileAt(tileX,tileY1).getType() == 2)
 			return;
-		else if(environment.tileAt(tileX,tileY2) instanceof SolidTile)
+		else if(environment.tileAt(tileX,tileY2).getType() == 2)
 			return;
 		else
 			hitbox.x+=speed;
@@ -46,36 +48,36 @@ public class Character {
 	
 	public void moveLeft() {
 		direction=0;
-		int tileX = (int)(hitbox.x)/enironment.TILE_SIZE;
+		int tileX = (int)(hitbox.x)/environment.TILE_SIZE;
 		int tileY1 = (int)(hitbox.y)/environment.TILE_SIZE;
 		int tileY2 = (int)(hitbox.y+hitbox.height)/environment.TILE_SIZE;
-		if(environment.tileAt(tileX,tileY1) instanceof SolidTile)
+		if(environment.tileAt(tileX,tileY1).getType() == 2)
 			return;
-		else if(environment.tileAt(tileX,tileY2) instanceof SolidTile)
+		else if(environment.tileAt(tileX,tileY2).getType() == 2)
 			return;
 		else
 			hitbox.x-=speed;
 	}
 	
 	public void moveUp() {
-		int tileY = (int)(hitbox.y)/enironment.TILE_SIZE;
+		int tileY = (int)(hitbox.y)/environment.TILE_SIZE;
 		int tileX1 = (int)(hitbox.x)/environment.TILE_SIZE;
 		int tileX2 = (int)(hitbox.x+hitbox.width)/environment.TILE_SIZE;
-		if(environment.tileAt(tileX1,tileY) instanceof SolidTile)
+		if(environment.tileAt(tileX1,tileY).getType() == 2)
 			return;
-		else if(environment.tileAt(tileX2,tileY) instanceof SolidTile)
+		else if(environment.tileAt(tileX2,tileY).getType() == 2)
 			return
 		else
 			hitbox.y-=speed;
 	}
 	
 	public void moveDown() {
-		int tileY = (int)(hitbox.y+hitbox.y)/enironment.TILE_SIZE;
+		int tileY = (int)(hitbox.y+hitbox.y)/environment.TILE_SIZE;
 		int tileX1 = (int)(hitbox.x)/environment.TILE_SIZE;
 		int tileX2 = (int)(hitbox.x+hitbox.width)/environment.TILE_SIZE;
-		if(environment.tileAt(tileX1,tileY) instanceof SolidTile)
+		if(environment.tileAt(tileX1,tileY).getType() == 2)
 			return;
-		else if(environment.tileAt(tileX2,tileY) instanceof SolidTile)
+		else if(environment.tileAt(tileX2,tileY).getType() == 2)
 			return
 		else
 			hitbox.y+=speed;
