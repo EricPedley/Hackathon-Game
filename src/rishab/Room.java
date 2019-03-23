@@ -16,9 +16,10 @@ public class Room {
 	
 	public Room() {
 		tileType = new int [x][y];
+		assignIndices();
 	}
 	public Room(int rows, int cols) {
-		
+		assignIndices();
 	}
 	
 	public void assignIndices() {
