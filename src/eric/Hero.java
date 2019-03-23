@@ -9,7 +9,7 @@ public class Hero extends Character {
 	private PImage leftImage,rightImage;
 	
 	public Hero(double x, double y, PImage leftImage, PImage rightImage, Room env) {
-		super(x, y, 14,36,null, env);
+		super(x, y, 35,90,null, env);
 		this.leftImage=leftImage;
 		this.rightImage=rightImage;
 		img = leftImage;
