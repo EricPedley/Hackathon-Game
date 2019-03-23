@@ -2,14 +2,14 @@ package rishab;
 
 public class Map {
 	
-	private room[][] map;
+	private Room[][] map;
 	
 	public Map() {
-		map = new room[10][10];
+		map = new Room[10][10];
 	}
 	
 	public Map(int rows , int cols) {
-		map = new room[rows][cols];	
+		map = new Room[rows][cols];	
 	}
 
 }

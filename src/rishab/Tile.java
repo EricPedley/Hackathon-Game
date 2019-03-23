@@ -1,5 +1,5 @@
 package rishab;
 
-public class tile {
+public class Tile {
 
 }

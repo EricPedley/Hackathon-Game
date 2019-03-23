@@ -1,14 +1,14 @@
 package rishab;
 
-public class room { 
+public class Room { 
 	
 	private int[][] tileType;
 	private int x = 10 , y =10;
 	
-	public room() {
+	public Room() {
 		tileType = new int [x][y];
 	}
-	public room(int rows, int cols) {
+	public Room(int rows, int cols) {
 		
 	}
 	
