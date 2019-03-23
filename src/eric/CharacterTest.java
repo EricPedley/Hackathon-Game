@@ -10,6 +10,7 @@ import processing.core.PImage;
 import rishab.Room;
 
 public class CharacterTest extends PApplet {
+	boolean[] keys = new boolean[500];
 	static String fS = System.getProperty("file.separator");
 	Hero h;
 	Room r;
@@ -27,8 +28,26 @@ public class CharacterTest extends PApplet {
 	}
 	
 	public void draw() {
-		r.draw(this);
+		if(keys[37]) {
+			h.moveLeft();
+		} else if(keys[38]) {
+			h.moveUp();
+		} else if(keys[39]) {
+			h.moveRight();
+		} else if(keys[40]) {
+			h.moveDown();
+		}
+		//r.draw(this);
+		background(255);
 		h.draw(this);
+	}
+	
+	public void keyPressed() {
+		keys[keyCode]=true;
+	}
+	
+	public void keyReleased() {
+		keys[keyCode]=false;
 	}
 	
 	public static void main(String[] args) {
