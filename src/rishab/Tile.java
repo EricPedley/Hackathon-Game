@@ -1,5 +1,6 @@
 package rishab;
 
+import processing.core.PApplet;
 import processing.core.PImage;
 
 public class Tile {
@@ -14,6 +15,10 @@ public class Tile {
 	
 	public int getType() {
 		return type;
+	}
+	
+	public void draw(PApplet p) {
+		p.image(image, 0, 0);
 	}
 
 }
