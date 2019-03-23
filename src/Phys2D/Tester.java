@@ -38,6 +38,6 @@ public class Tester extends PApplet {
 	}
 	
 	public static void main(String[] args) {
-		PApplet.main("Tester");
+		PApplet.main("Tester.java");
 	}
 }
