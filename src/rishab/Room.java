@@ -23,7 +23,7 @@ public class Room {
 	}
 	
 	public void assignIndices(PApplet p) {
-		tileIndices[0] = new Tile(p.loadImage("Images"+fs+"Map"+fs+"Wall"+fs+"Rock1BottomFront.gif"),0);
+		tileIndices[0] = new Tile(p.loadImage("Images"+fs+"Map"+fs+"Wall"+fs+"RockBottomFront.gif"),0);
 		tileIndices[1] = new Tile(p.loadImage("Images"+fs+"Map"+fs+"Floor"+fs+"1Tile.gif"),2);
 	}
 	
