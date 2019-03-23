@@ -12,7 +12,7 @@ public class Main {
 
 	public static void main(String args[]) {
 
-		Room r = new Room();
+		//Room r = new Room();
 		DrawingSurface drawing = new DrawingSurface();
 		PApplet.runSketch(new String[]{""}, drawing);
 		PSurfaceAWT surf = (PSurfaceAWT) drawing.getSurface();

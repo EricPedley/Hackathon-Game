@@ -14,17 +14,17 @@ public class Room {
 	public static final int TILE_SIZE = 20; 
 	private String fs = System.getProperty("file.separator");
 	
-	public Room() {
+	public Room(PApplet p) {
 		tileType = new int [x][y];
-		assignIndices();
+		assignIndices(p);
 	}
-	public Room(int rows, int cols) {
-		assignIndices();
+	public Room(int rows, int cols, PApplet p) {
+		assignIndices(p);
 	}
 	
-	public void assignIndices() {
-		tileIndices[0] = new Tile(new PApplet().loadImage("Image"+fs+"Map"+fs+"Wall"+fs+"Rock1BottomFront.gif"),0);
-		tileIndices[1] = new Tile(new PApplet().loadImage("Image"+fs+"Map"+fs+"Floor"+fs+"1Tile.gif"),2);
+	public void assignIndices(PApplet p) {
+		tileIndices[0] = new Tile(p.loadImage("Image"+fs+"Map"+fs+"Wall"+fs+"Rock1BottomFront.gif"),0);
+		tileIndices[1] = new Tile(p.loadImage("Image"+fs+"Map"+fs+"Floor"+fs+"1Tile.gif"),2);
 	}
 	
 	public void assignTiles() {

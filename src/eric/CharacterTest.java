@@ -22,7 +22,7 @@ public class CharacterTest extends PApplet {
 		 PImage leftImage = loadImage("Images"+fS+"Characters"+fS+"Main Character"+fS+"Main Character Left.gif");
 		 PImage rightImage = loadImage("Images"+fS+"Characters"+fS+"Main Character"+fS+"Main Character Right.gif");
 
-		r = new Room();
+		r = new Room(this);
 		h = new Hero(100,100,leftImage,rightImage,r);
 	}
 	
