@@ -38,9 +38,9 @@ public class Character {
 		int tileX = (int)(hitbox.x+hitbox.width)/environment.TILE_SIZE;
 		int tileY1 = (int)(hitbox.y)/environment.TILE_SIZE;
 		int tileY2 = (int)(hitbox.y+hitbox.height)/environment.TILE_SIZE;
-		if(environment.tileAt(tileX,tileY1).getType() == 2)
+		if(environment.tileAt(tileX,tileY1).getType() == 0)
 			return;
-		else if(environment.tileAt(tileX,tileY2).getType() == 2)
+		else if(environment.tileAt(tileX,tileY2).getType() == 0)
 			return;
 		else
 			hitbox.x+=speed;
@@ -51,9 +51,9 @@ public class Character {
 		int tileX = (int)(hitbox.x)/environment.TILE_SIZE;
 		int tileY1 = (int)(hitbox.y)/environment.TILE_SIZE;
 		int tileY2 = (int)(hitbox.y+hitbox.height)/environment.TILE_SIZE;
-		if(environment.tileAt(tileX,tileY1).getType() == 2)
+		if(environment.tileAt(tileX,tileY1).getType() == 0)
 			return;
-		else if(environment.tileAt(tileX,tileY2).getType() == 2)
+		else if(environment.tileAt(tileX,tileY2).getType() == 0)
 			return;
 		else
 			hitbox.x-=speed;
@@ -63,10 +63,10 @@ public class Character {
 		int tileY = (int)(hitbox.y)/environment.TILE_SIZE;
 		int tileX1 = (int)(hitbox.x)/environment.TILE_SIZE;
 		int tileX2 = (int)(hitbox.x+hitbox.width)/environment.TILE_SIZE;
-		if(environment.tileAt(tileX1,tileY).getType() == 2)
+		if(environment.tileAt(tileX1,tileY).getType() == 0)
 			return;
-		else if(environment.tileAt(tileX2,tileY).getType() == 2)
-			return
+		else if(environment.tileAt(tileX2,tileY).getType() == 0)
+			return;
 		else
 			hitbox.y-=speed;
 	}
@@ -75,10 +75,10 @@ public class Character {
 		int tileY = (int)(hitbox.y+hitbox.y)/environment.TILE_SIZE;
 		int tileX1 = (int)(hitbox.x)/environment.TILE_SIZE;
 		int tileX2 = (int)(hitbox.x+hitbox.width)/environment.TILE_SIZE;
-		if(environment.tileAt(tileX1,tileY).getType() == 2)
+		if(environment.tileAt(tileX1,tileY).getType() == 0)
 			return;
-		else if(environment.tileAt(tileX2,tileY).getType() == 2)
-			return
+		else if(environment.tileAt(tileX2,tileY).getType() == 0)
+			return;
 		else
 			hitbox.y+=speed;
 	}
