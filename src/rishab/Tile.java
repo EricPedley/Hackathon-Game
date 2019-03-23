@@ -17,8 +17,8 @@ public class Tile {
 		return type;
 	}
 	
-	public void draw(PApplet p) {
-		p.image(image, 0, 0);
+	public void draw(PApplet p, int size) {
+		p.image(image, 0, 0, size, size);
 	}
 
 }
