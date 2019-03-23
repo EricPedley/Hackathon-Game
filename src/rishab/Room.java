@@ -8,7 +8,7 @@ import processing.core.PApplet;
 public class Room { 
 	
 	private int[][] tileType;
-	private int x = 10 , y =10;
+	private int x = 20 , y = 20;
 	private Tile[] tileIndices = new Tile[2];
 	private ArrayList<Projectile> projectiles;
 	public static final int TILE_SIZE = 20; 
