@@ -1,11 +1,12 @@
 package eric;
 
 import processing.core.PImage;
+import rishab.Room;
 
 public class Enemy extends Character {
 
-	public Enemy(double x, double y, String imageFilePath) {
-		super(x, y, imageFilePath);
+	public Enemy(double x, double y, PImage image, Room env) {
+		super(x, y, image.width,image.height,image,env);
 		// TODO Auto-generated constructor stub
 	}
 
