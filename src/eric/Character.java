@@ -24,7 +24,7 @@ public class Character {
 		speed=5;
 	}
 	
-	public void draw(PApplet marker) {
+	public void draw(PApplet marker) {//Change!
 		marker.image(img, (float)hitbox.x, (float)hitbox.y);
 	}
 	
