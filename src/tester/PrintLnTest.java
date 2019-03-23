@@ -8,7 +8,7 @@ public class PrintLnTest {
 	public static void main(String[] args) throws IOException {
 		FileWriter writer = null;
 		try {
-			writer = new FileWriter("text.txt");
+			writer = new FileWriter("Test.txt");
 			writer.write("No U");
 		} finally {
 			if(writer != null)
