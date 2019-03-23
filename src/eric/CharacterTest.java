@@ -37,8 +37,8 @@ public class CharacterTest extends PApplet {
 		} else if(keys[40]) {
 			h.moveDown();
 		}
-		//r.draw(this);
 		background(255);
+		r.draw(this);
 		h.draw(this);
 	}
 	
