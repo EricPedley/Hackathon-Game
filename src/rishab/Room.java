@@ -129,6 +129,13 @@ public class Room {
 		
 	}
 	
+	public void addProjectile(Projectile p,boolean isHero) {
+		if(isHero)
+		myProjectiles.add(p);
+		else
+			enemyProjectiles.add(p);
+	}
+	
 	public int getX() {
 		return x;
 	}
