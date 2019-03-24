@@ -38,6 +38,15 @@ public class CharacterTest extends PApplet {
 		background(255);
 		r.draw(this);
 		h.draw(this);
+		int tileX = (int)Math.ceil((h.getHitbox().x)/Room.TILE_SIZE)+1;
+		int tileY1 = (int)Math.floor(h.getHitbox().y/Room.TILE_SIZE);
+		int tileY2 = tileY1+1;
+		int tileY3 = tileY1+2;
+		noFill();
+		h.getHitbox().draw(this);
+		rect(tileX*Room.TILE_SIZE,tileY1*Room.TILE_SIZE,Room.TILE_SIZE,Room.TILE_SIZE);
+		rect(tileX*Room.TILE_SIZE,tileY2*Room.TILE_SIZE,Room.TILE_SIZE,Room.TILE_SIZE);
+		rect(tileX*Room.TILE_SIZE,tileY3*Room.TILE_SIZE,Room.TILE_SIZE,Room.TILE_SIZE);
 	}
 	
 	public void keyPressed() {

@@ -50,6 +50,8 @@ public class Character {
 			return;
 		else
 			hitbox.x+=speed;
+		marker.rect(tileX*Room.TILE_SIZE,tileY1*Room.TILE_SIZE,Room.TILE_SIZE,Room.TILE_SIZE);
+		marker.rect(tileX*Room.TILE_SIZE,tileY2*Room.TILE_SIZE,Room.TILE_SIZE,Room.TILE_SIZE);
 	}
 	
 	public void moveLeft(PApplet marker) {
