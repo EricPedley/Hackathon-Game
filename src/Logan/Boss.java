@@ -70,7 +70,7 @@ public class Boss {
 			p.image(ImageLoader.BOSS, x - width / 2, y - height / 2, width, height);
 			p.pushStyle();
 			p.stroke(0);
-	
+			p.noFill();
 			p.strokeWeight(p.width / 200);
 			p.rect(p.width / 4, y + p.height/2, p.width / 2, p.height / 16);
 			p.noStroke();
