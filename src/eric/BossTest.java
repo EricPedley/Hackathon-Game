@@ -41,6 +41,7 @@ public class BossTest extends PApplet {
 	}
 	
 	public void draw() {
+		if(h.getHp()>0) {
 		//System.out.println(height);
 		transX=0;
 		transY=0;
@@ -99,6 +100,10 @@ public class BossTest extends PApplet {
 		background(255);
 		r.draw(this);
 		h.draw(this);
+		} else {
+			System.out.println("about to die");
+			image(ImageLoader.GAME_OVER,width,height);
+		}
 	}
 	
 	public void keyPressed() {
