@@ -13,8 +13,9 @@ public class Room {
 	
 	private int[][] tileType;
 	private int x = 42, y = 15;
-	private Tile[] tileIndices = new Tile[10];
-	private ArrayList<Projectile> projectiles;
+	private Tile[] tileIndices = new Tile[19];
+	private ArrayList<Projectile> myProjectiles;
+	private ArrayList<Projectile> enemyProjectiles;
 	public static final int TILE_SIZE = 64; 
 	private String fs = System.getProperty("file.separator");
 	
@@ -39,7 +40,16 @@ public class Room {
 		tileIndices[6] = new Tile(p.loadImage("Images"+fs+"Map"+fs+"Wall"+fs+"InwardRockCornerBottomRight.gif"),6);
 		tileIndices[7] = new Tile(p.loadImage("Images"+fs+"Map"+fs+"Wall"+fs+"InwardRockCornerTopLeft.gif"),7);
 		tileIndices[8] = new Tile(p.loadImage("Images"+fs+"Map"+fs+"Wall"+fs+"InwardRockCornerTopRight.gif"),8);
-		tileIndices[9] = new Tile(p.loadImage("Images"+fs+"Map"+fs+"Floor"+fs+"1Tile.gif"),9);
+		tileIndices[9] = new Tile(p.loadImage("Images"+fs+"Map"+fs+"Wall"+fs+"OutwardRockCornerBottomLeft.gif"),9);
+		tileIndices[10] = new Tile(p.loadImage("Images"+fs+"Map"+fs+"Wall"+fs+"OutWardRockCornerBottomRight.gif"),10);
+		tileIndices[11] = new Tile(p.loadImage("Images"+fs+"Map"+fs+"Wall"+fs+"OutwardRockCornerTopLeft.gif"),11);
+		tileIndices[12] = new Tile(p.loadImage("Images"+fs+"Map"+fs+"Wall"+fs+"OutwardRockCornerTopRight.gif"),12);
+		tileIndices[13] = new Tile(p.loadImage("Images"+fs+"Map"+fs+"Floor"+fs+"1Tile.gif"),13);
+		tileIndices[14] = new Tile(p.loadImage("Images"+fs+"Map"+fs+"Floor"+fs+"4Tile.gif"),14);
+		tileIndices[15] = new Tile(p.loadImage("Images"+fs+"Map"+fs+"Floor"+fs+"BigTileBottomLeft.gif"),15);
+		tileIndices[16] = new Tile(p.loadImage("Images"+fs+"Map"+fs+"Floor"+fs+"BigTileBottomRight.gif"),16);
+		tileIndices[17] = new Tile(p.loadImage("Images"+fs+"Map"+fs+"Floor"+fs+"BigTileTopLeft.gif"),17);
+		tileIndices[18] = new Tile(p.loadImage("Images"+fs+"Map"+fs+"Floor"+fs+"BigTileTopRight.gif"),18);
 	}
 	
 	/*public void assignTiles() {
