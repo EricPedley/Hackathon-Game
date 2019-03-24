@@ -12,7 +12,7 @@ public class Boss {
 
 	private int health = 200;
 	private final int MAX_HEALTH = 200;
-	private int frame = 1140;
+	private int frame = -59;
 	private float x;
 	private float y;
 	private boolean direction;
