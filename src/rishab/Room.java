@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 import Adele.Projectile;
 import Logan.ImageLoader;
-import eric.Enemy;
+import Adele.Enemy;
 import eric.Hero;
 import processing.core.PApplet;
 import processing.core.PImage;
@@ -32,11 +32,13 @@ public class Room {
 	//Constuctors
 	public Room(int levelNumber, int numEnemies) {
 		//tileType = new int [x][y];
+		tileIndices = TileImageLoader.tileIndices;
 		myProjectiles = new ArrayList<Projectile>();
 		enemyProjectiles = new ArrayList<Projectile>();
 		enemies = new ArrayList<Enemy>();
 		PImage[] enemyImages = {};
 		for(int c=0;c<numEnemies;c++) {
+			System.out.println(numEnemies);
 			enemies.add(new Enemy(Math.random()*x*TILE_SIZE,Math.random()*y*TILE_SIZE,enemyImages[(int)(Math.random()*enemyImages.length)],this));
 		}
 		bulletImage = ImageLoader.RED_PROJECTILE;
@@ -193,5 +195,10 @@ public class Room {
 	
 	public Map getMap() {
 		return map;
+	}
+
+	public ArrayList<Projectile> getMyProjectiles() {
+		// TODO Auto-generated method stub
+		return myProjectiles;
 	}
 }

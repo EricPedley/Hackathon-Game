@@ -4,8 +4,10 @@ import processing.core.PApplet;
 import processing.core.PImage;
 
 public class TileImageLoader {
-	public static void loadTileImages(PApplet p, Tile[] tileIndices) {
+	public static Tile[] tileIndices;
+	public static void loadTileImages(PApplet p) {
 		String fs = System.getProperty("file.separator");
+		tileIndices = new Tile[20];
 		tileIndices[0] = new Tile(p.loadImage("Images"+fs+"Map"+fs+"Wall"+fs+"LeftRockWall.gif"),1);
 		tileIndices[1] = new Tile(p.loadImage("Images"+fs+"Map"+fs+"Wall"+fs+"RightRockWall.gif"),1);
 		tileIndices[2] = new Tile(p.loadImage("Images"+fs+"Map"+fs+"Wall"+fs+"RockTopFront.gif"),1);
