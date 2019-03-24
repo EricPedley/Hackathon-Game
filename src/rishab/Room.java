@@ -25,6 +25,8 @@ public class Room {
 	public Room(PApplet p) {
 		//tileType = new int [x][y];
 		assignIndices(p);
+		myProjectiles = new ArrayList<Projectile>();
+		enemyProjectiles = new ArrayList<Projectile>();
 		bulletImage = p.loadImage("Images"+fs+"Projectiles"+fs+"Red Projectile.gif");
 		readData("Levels"+fs+"Level1.txt");
 		//assignTiles();
@@ -167,5 +169,11 @@ public class Room {
 			p.translate(-x * TILE_SIZE, TILE_SIZE);
 		}
 		p.popMatrix();
+		for(Projectile proj: myProjectiles) {
+			proj.draw(p);
+		}
+		for(Projectile proj: enemyProjectiles) {
+			proj.draw(p);
+		}
 	}
 }
