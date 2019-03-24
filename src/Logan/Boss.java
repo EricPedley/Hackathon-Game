@@ -11,7 +11,7 @@ import processing.core.PApplet;
 public class Boss {
 
 	private int health = 160;
-	private final int MAX_HEALTH = 160;
+	private final int MAX_HEALTH = 300;
 	private int frame = 0;
 	private int pause = 0;
 	private float x;

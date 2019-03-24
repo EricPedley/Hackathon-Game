@@ -19,7 +19,7 @@ public class Character {
 	public Character(double x, double y, double width, double height, PImage image, Room env) {
 		img = image;
 		hitbox = new Rectangle(x,y,width,height);
-		hp=15;
+		hp=40;
 		environment = env;
 		speed=15;
 	}
