@@ -10,8 +10,8 @@ import processing.core.PApplet;
 
 public class Boss {
 
-	private int health = 200;
-	private final int MAX_HEALTH = 200;
+	private int health = 160;
+	private final int MAX_HEALTH = 160;
 	private int frame = 0;
 	private int pause = 0;
 	private float x;
@@ -72,7 +72,7 @@ public class Boss {
 			p.stroke(0);
 	
 			p.strokeWeight(p.width / 200);
-			p.rect(p.width / 4, p.height / 16, p.width / 2, p.height / 16);
+			p.rect(p.width / 4, y + p.height/2, p.width / 2, p.height / 16);
 			p.noStroke();
 			
 			if(pause > 60) {
@@ -80,7 +80,7 @@ public class Boss {
 				p.fill(255 - 255 * (health - MAX_HEALTH / 2) / (MAX_HEALTH / 2), 255, 0);
 			else
 				p.fill(255, 255 * health / (MAX_HEALTH / 2), 0);
-			p.rect(p.width / 4, p.height / 16, p.width / 2 * health / MAX_HEALTH, p.height / 16);
+			p.rect(p.width / 4, y + p.height/2, p.width / 2 * health / MAX_HEALTH, p.height / 16);
 			p.popStyle();
 			
 			for(int i = 0; i < explosions.size(); i++) {
