@@ -28,6 +28,7 @@ public class Boss {
 	public void testShot(ArrayList<Projectile> p) {
 		for(int i = 0; i < p.size(); i++) {
 			if((new Rectangle( x - width / 2, y - height / 2, width, height)).isTouching(new Circle(p.get(i).getXPos(),p.get(i).getYPos(),p.get(i).getRadius()))) {
+				p.remove(i);
 				int prev = health;
 				health --;
 				if (prev > MAX_HEALTH * 3 / 4 && health <= MAX_HEALTH * 3 / 4)
