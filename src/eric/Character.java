@@ -39,11 +39,11 @@ public class Character {
 		environment.deleteProjectile(p);
 	}
 	
-	public void shoot(double targetX, double targetY) {
+	public void shoot(double targetX, double targetY, boolean isHero) {
 		double angle = Math.atan((targetY-hitbox.y)/(targetX-hitbox.x));
 		if((targetX-hitbox.x)<0)
 			angle+=Math.PI;
-		environment.addProjectile(new Projectile((float)hitbox.x,(float)hitbox.y,(float)angle,10));
+		environment.addProjectile(new Projectile((float)hitbox.x,(float)hitbox.y,(float)angle,10),isHero);
 	}
 	
 	public void moveRight() {
