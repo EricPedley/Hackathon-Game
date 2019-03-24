@@ -20,8 +20,8 @@ public class Room {
 	public static final int TILE_SIZE = 64; 
 	private String fs = System.getProperty("file.separator");
 	public final PImage bulletImage;
-	//private PApplet marker;
 	
+	//constuctor
 	public Room(PApplet p) {
 		//tileType = new int [x][y];
 		assignIndices(p);
