@@ -14,29 +14,27 @@ public class CharacterTest extends PApplet {
 	static String fS = System.getProperty("file.separator");
 	Hero h;
 	Room r;
-	public void settings() {
-		size(400,400);
-		
-	}
+	float startX = 300, startY = 200;
 	
 	public void setup() {//character image is 14x36 pixels
 		 PImage leftImage = loadImage("Images"+fS+"Characters"+fS+"Main Character"+fS+"Main Character Left.gif");
 		 PImage rightImage = loadImage("Images"+fS+"Characters"+fS+"Main Character"+fS+"Main Character Right.gif");
-
+		 
 		r = new Room(this);
-		h = new Hero(200,200,leftImage,rightImage,r);
+		h = new Hero(startX,startY,leftImage,rightImage,r);
 	}
 	
 	public void draw() {
 		if(keys[37]) {
-			h.moveLeft();
-		} else if(keys[38]) {
-			h.moveUp();
-		} else if(keys[39]) {
-			h.moveRight();
-		} else if(keys[40]) {
-			h.moveDown();
+			h.moveLeft(this);
+		}  if(keys[38]) {
+			h.moveUp(this);
+		}  if(keys[39]) {
+			h.moveRight(this);
+		}  if(keys[40]) {
+			h.moveDown(this);
 		}
+		translate(startX-(float)h.getHitbox().x,startY-(float)h.getHitbox().y);
 		background(255);
 		r.draw(this);
 		h.draw(this);
@@ -57,7 +55,7 @@ public class CharacterTest extends PApplet {
 		PSurfaceAWT.SmoothCanvas canvas = (PSurfaceAWT.SmoothCanvas) surf.getNative();
 		JFrame window = (JFrame)canvas.getFrame();
 
-		window.setSize(400, 300);
+		window.setSize(600, 400);
 		window.setMinimumSize(new Dimension(100,100));
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		window.setResizable(true);
