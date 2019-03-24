@@ -18,6 +18,7 @@ public class BossRoom extends Room {
 	}
 	public void draw(PApplet p) {
 		super.draw(p);
+		boss.testShot(super.getMyProjectiles());
 		boss.draw(p, super.getEnemyProjectiles());
 	}
 	

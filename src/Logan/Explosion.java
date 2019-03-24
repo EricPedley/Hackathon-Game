@@ -6,15 +6,16 @@ import processing.core.PApplet;
 
 public class Explosion {
 	private int frame;
-	private int x, y;
-	public Explosion(int x, int y) {
-		this.x = x;
-		this.y = y;
+	private float x, y;
+	public Explosion(float f, float g) {
+		this.x = f;
+		this.y = g;
 	}
 	
 	public void draw(PApplet p, ArrayList<Explosion> e, int i) {
-		p.image(ImageLoader.EXPLOSION[frame/5], x, y);
-		if(frame >= 65)
+		p.image(ImageLoader.EXPLOSION[frame], x, y, 80, 80);
+		if(frame >= 12)
 			e.remove(i);
+		frame++;
 	}
 }

@@ -10,7 +10,7 @@ public class Map {
 	private int x = 0,y = 0;
 	private Room activeRoom;
 	
-	public Map(Hero h) {
+	public Map() {
 		/*map = new Room[5][5];
 		for(int p=0;p<5;p++) {
 			for(int q=0;q<5;q++) {
@@ -19,7 +19,7 @@ public class Map {
 					map[p][q] = new BossRoom();
 			}
 		}*/
-		activeRoom = new BossRoom(h);
+		activeRoom = new BossRoom();
 	}
 	
 	public void changeActiveRoom(int x , int y) {

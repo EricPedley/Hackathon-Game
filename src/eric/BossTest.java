@@ -2,7 +2,15 @@ package eric;
 
 import java.awt.Dimension;
 
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.JFrame;
+
+import java.io.File;
+import java.io.IOException;
 
 import Logan.ImageLoader;
 import processing.awt.PSurfaceAWT;
@@ -11,6 +19,8 @@ import processing.core.PImage;
 import rishab.Map;
 import rishab.Room;
 import rishab.TileImageLoader;
+import sun.audio.AudioPlayer;
+
 
 public class BossTest extends PApplet {
 	BossRoom r;
@@ -20,7 +30,10 @@ public class BossTest extends PApplet {
 	float startX = 300, startY = 200;
 	float transX, transY;
 	
+	Clip clip; 
+	AudioInputStream audioInputStream;
 	
+	private String fs = System.getProperty("file.separator");
 	public static void main(String[] args) {
         PApplet.main("eric.BossTest");
 
@@ -31,6 +44,35 @@ public class BossTest extends PApplet {
 	}
 	
 	public void setup() {
+		try {
+			audioInputStream =  
+			        AudioSystem.getAudioInputStream(new File("Music" + fs + "Boss Music.wav").getAbsoluteFile());
+			// create clip reference 
+	        try {
+				clip = AudioSystem.getClip();
+			} catch (LineUnavailableException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} 
+	          
+	        // open audioInputStream to the clip 
+	        try {
+				clip.open(audioInputStream);
+			} catch (LineUnavailableException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} 
+		} catch (UnsupportedAudioFileException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+          
+        
+          
+        clip.loop(Clip.LOOP_CONTINUOUSLY);
 		//character image is 14x36 pixels
 		ImageLoader.setUp(this);
 		TileImageLoader.loadTileImages(this);
@@ -41,6 +83,7 @@ public class BossTest extends PApplet {
 	}
 	
 	public void draw() {
+		if(h.getHp()>0) {
 		//System.out.println(height);
 		transX=0;
 		transY=0;
@@ -78,23 +121,34 @@ public class BossTest extends PApplet {
 		r.draw(this);
 		h.draw(this);*/
 		translate(width/2  -(float)h.getHitbox().x ,r.getY()/4 * r.TILE_SIZE-(float)h.getHitbox().y);
-		
-		if(h.getHitbox().x<width/2)
+		transX+=width/2  -(float)h.getHitbox().x;
+		transY+=r.getY()/4 * r.TILE_SIZE-(float)h.getHitbox().y;
+		if(h.getHitbox().x<width/2) {
 			translate((float)(h.getHitbox().x-width/2),0);
-		if(h.getHitbox().y<height/2)
+			transX+=(float)(h.getHitbox().x-width/2);
+		}
+		if(h.getHitbox().y<height/2) {
 			translate(0,(float)(h.getHitbox().y-height/2));
+			transY+=(float)(h.getHitbox().y-height/2);
+		}
 		if(r.getX()*Room.TILE_SIZE-h.getHitbox().x<width/2) {
 			translate((float)(-(r.getX()*Room.TILE_SIZE-h.getHitbox().x)+width/2),0);
+			transX+=(float)(-(r.getX()*Room.TILE_SIZE-h.getHitbox().x)+width/2);
 		}
 		if(r.getY()*Room.TILE_SIZE-h.getHitbox().y<height/2) {
 			translate(0,(float)(-(r.getY()*Room.TILE_SIZE-h.getHitbox().y)+height/2));
+			transY+=(float)(-(r.getY()*Room.TILE_SIZE-h.getHitbox().y)+height/2);
 		}
 		background(255);
 		r.draw(this);
 		h.draw(this);
+		} else {
+			System.out.println("about to die");
+			image(ImageLoader.GAME_OVER,0,0,width,height);
+		}
 	}
 	
-	public void keyPressed() {
+	public void keyPressed() {//fuck this
 		keys[keyCode]=true;
 	}
 	

@@ -7,7 +7,7 @@ public class ImageLoader {
 	private static String fs = System.getProperty("file.separator");
 	public static PImage[] EXPLOSION = new PImage[13];
 	public static PImage RED_PROJECTILE, GREEN_PROJECTILE, YELLOW_STAR, PURPLE_STAR, MAIN_CHARACTER_LEFT,
-			MAIN_CHARACTER_RIGHT, BOSS_PILLAR, BOSS,MINION_RIGHT,MINION_LEFT,SLIME_RIGHT,SLIME_LEFT;
+			MAIN_CHARACTER_RIGHT, BOSS_PILLAR, BOSS,MINION_RIGHT,MINION_LEFT,SLIME_RIGHT,SLIME_LEFT,GAME_OVER;
 
 	public static void setUp(PApplet p) {
 		
@@ -26,8 +26,9 @@ public class ImageLoader {
 		BOSS_PILLAR = p.loadImage("Images" + fs + "Characters" + fs + "Boss" + fs + "Pillar.gif");
 		BOSS = p.loadImage("Images" + fs + "Characters" + fs + "Boss" + fs + "Octocat.gif");
 		for(int i = 0; i < 13; i ++) {
-			EXPLOSION[i] = p.loadImage("Images" + fs + "Explosion" + fs + i + ".png");
+			EXPLOSION[i] = p.loadImage("Images" + fs + "Explosion" + fs + (i + 1) + ".png");
 		}
-		
+		GAME_OVER = p.loadImage("Images" + fs + "GG" + fs + "Game Over.gif");
+
 	}
 }

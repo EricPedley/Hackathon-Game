@@ -11,24 +11,28 @@ import Phys2D.Rectangle;
 
 public class Boss {
 
-	private int health = 50;
-	private final int MAX_HEALTH = 50;
+	private int health = 200;
+	private final int MAX_HEALTH = 200;
 	private int frame = 1140;
 	private float x;
 	private float y;
 	private boolean direction;
 	private float width, height;
 	private float scalar = 10;
+	private ArrayList<Explosion> explosions;
 
 	public Boss() {
-		
+		explosions = new ArrayList<Explosion>();
 
 	}
 
 	public void testShot(ArrayList<Projectile> p) {
 		for(int i = 0; i < p.size(); i++) {
-			if((new Rectangle( x - width / 2, y - height / 2, width, height)).isTouching(new Circle(p.get(i).getXPos(),p.get(i).getYPos(),p.get(i).getRadius()))) {
+			
+			if((new Rectangle( x - width / 2, y - height / 2, width-20, height - 40)).isTouching(new Circle(p.get(i).getXPos(),p.get(i).getYPos(),p.get(i).getRadius()))) {
+				explosions.add(new Explosion(p.get(i).getXPos() - 40,p.get(i).getYPos() - 40));
 				p.remove(i);
+				
 				int prev = health;
 				health --;
 				if (prev > MAX_HEALTH * 3 / 4 && health <= MAX_HEALTH * 3 / 4)
@@ -69,6 +73,10 @@ public class Boss {
 			p.fill(255, 255 * health / (MAX_HEALTH / 2), 0);
 		p.rect(p.width / 4, p.height / 16, p.width / 2 * health / MAX_HEALTH, p.height / 16);
 		p.popStyle();
+		
+		for(int i = 0; i < explosions.size(); i++) {
+			explosions.get(i).draw(p, explosions, i);
+		}
 
 		if (health > MAX_HEALTH * 3 / 4) {
 			if (frame < 1200) {
@@ -395,6 +403,6 @@ public class Boss {
 			}
 			frame = frame % 2400;
 		}
-		frame++;
+		frame+=5;
 	}
 }
