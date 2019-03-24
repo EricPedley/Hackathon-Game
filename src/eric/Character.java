@@ -42,8 +42,8 @@ public class Character {
 	public void moveRight() {
 		direction=1;
 		int tileX = (int)(hitbox.x+hitbox.width)/Room.TILE_SIZE;
-		int tileY1 = (int)(hitbox.y)/Room.TILE_SIZE;
-		int tileY2 = (int)(hitbox.y+hitbox.height)/Room.TILE_SIZE;
+		int tileY1 = (int)Math.ceil(hitbox.y/Room.TILE_SIZE);
+		int tileY2 = (int)Math.ceil((hitbox.y+hitbox.height)/Room.TILE_SIZE);
 		if(environment.tileAt(tileX,tileY1).getType() == 0)
 			return;
 		else if(environment.tileAt(tileX,tileY2).getType() == 0)
@@ -54,9 +54,9 @@ public class Character {
 	
 	public void moveLeft() {
 		direction=0;
-		int tileX = (int)(hitbox.x)/Room.TILE_SIZE;
-		int tileY1 = (int)(hitbox.y)/Room.TILE_SIZE;
-		int tileY2 = (int)(hitbox.y+hitbox.height)/Room.TILE_SIZE;
+		int tileX = (int)hitbox.x/Room.TILE_SIZE;
+		int tileY1 = (int)Math.ceil(hitbox.y/Room.TILE_SIZE);
+		int tileY2 = (int)Math.ceil((hitbox.y+hitbox.height)/Room.TILE_SIZE);
 		if(environment.tileAt(tileX,tileY1).getType() == 0)
 			return;
 		else if(environment.tileAt(tileX,tileY2).getType() == 0)
@@ -66,21 +66,21 @@ public class Character {
 	}
 	
 	public void moveUp() {
-		int tileY = (int)(hitbox.y)/Room.TILE_SIZE;
-		int tileX1 = (int)(hitbox.x)/Room.TILE_SIZE;
-		int tileX2 = (int)(hitbox.x+hitbox.width)/Room.TILE_SIZE;
-		if(environment.tileAt(tileX1,tileY).getType() == 0)
+		int tileY = (int)hitbox.y/Room.TILE_SIZE;
+		int tileX1 = (int) Math.ceil(hitbox.x/Room.TILE_SIZE);
+		int tileX2 = (int) Math.ceil((hitbox.x+hitbox.width)/Room.TILE_SIZE);
+		if(environment.tileAt(tileX1,tileY).getType() == 0) {
 			return;
-		else if(environment.tileAt(tileX2,tileY).getType() == 0)
+		}else if(environment.tileAt(tileX2,tileY).getType() == 0) {
 			return;
-		else
+		}else
 			hitbox.y-=speed;
 	}
 	
 	public void moveDown() {
-		int tileY = (int)(hitbox.y+hitbox.y)/Room.TILE_SIZE;
-		int tileX1 = (int)(hitbox.x)/Room.TILE_SIZE;
-		int tileX2 = (int)(hitbox.x+hitbox.width)/Room.TILE_SIZE;
+		int tileY = (int)(hitbox.y+hitbox.height)/Room.TILE_SIZE;
+		int tileX1 = (int) Math.ceil(hitbox.x/Room.TILE_SIZE);
+		int tileX2 = (int) Math.ceil((hitbox.x+hitbox.width)/Room.TILE_SIZE);
 		if(environment.tileAt(tileX1,tileY).getType() == 0)
 			return;
 		else if(environment.tileAt(tileX2,tileY).getType() == 0)
