@@ -10,6 +10,7 @@ import java.util.ArrayList;
 
 
 import Logan.SineProjectile;
+import eric.Enemy;
 
 
 public class Slime 

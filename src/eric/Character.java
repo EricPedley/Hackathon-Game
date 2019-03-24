@@ -98,13 +98,15 @@ public class Character {
 		int tileX1 = (int) Math.floor((hitbox.x+(1-2*direction)*speed)/Room.TILE_SIZE);
 		int tileX2 = tileX1+1;
 		int tileX3 = (int) Math.floor((hitbox.x+hitbox.width-speed)/Room.TILE_SIZE);
-		if(environment.tileAt(tileX1,tileY).getType() < 9) {
+		if(environment.tileAt(tileX1,tileY).getType() ==1) {
 			return;
-		}else if(environment.tileAt(tileX2,tileY).getType() < 9) {
+		}else if(environment.tileAt(tileX2,tileY).getType() ==1 ) {
 			return;
-		}else if(environment.tileAt(tileX3,tileY).getType() < 9) {
+		}else if(environment.tileAt(tileX3,tileY).getType() ==1) {
 			return;
-		}else
+		}else if(environment.tileAt(tileX3,tileY).getType() ==2) {
+				
+			}else
 			hitbox.y+=speed;
 	}
 	
