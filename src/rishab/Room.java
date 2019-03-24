@@ -12,16 +12,16 @@ import processing.core.PApplet;
 public class Room { 
 	
 	private int[][] tileType;
-	private int x = 60 , y = 26;
+	private int x = 42, y = 15;
 	private Tile[] tileIndices = new Tile[6];
 	private ArrayList<Projectile> projectiles;
 	public static final int TILE_SIZE = 32; 
 	private String fs = System.getProperty("file.separator");
 	
 	public Room(PApplet p) {
-		tileType = new int [x][y];
+		//tileType = new int [x][y];
 		assignIndices(p);
-		readData("Levels"+fs+"Level1",tileType);
+		readData("Levels"+fs+"Level1.txt",tileType);
 		//assignTiles();
 		
 	}
@@ -76,13 +76,19 @@ public class Room {
 			try {
 					reader = new FileReader(dataFile);
 					in = new Scanner(reader);
+					String s = in.nextLine();
+					//x = Integer.parseInt(s.substring(0, s.indexOf(',')));
+					s = s.substring(s.indexOf(',') + 1); 
+					//y = Integer.parseInt(s.substring(0, s.indexOf(',')));
+					//gameData= new int[x][y];
+					
 
 					while (in.hasNext()) {
 						String line = in.nextLine();
-						for(int i = 0; i < line.length(); i++)
-							if (i < gameData.length && count < gameData[i].length)
-								gameData[i][count] = line.charAt(i);
-
+						for(int i = 0; line.indexOf(',') != -1; line = line.substring(line.indexOf(',') + 1) ) {
+							i++;
+							gameData[i][count] = Integer.parseInt(line.substring(0,line.indexOf(',')));
+						}
 						count++;
 					}
 			} catch (IOException ex) {
@@ -104,6 +110,14 @@ public class Room {
 	
 	public void deleteProjectile(Projectile p) {
 		
+	}
+	
+	public int getX() {
+		return x;
+	}
+	
+	public int getY() {
+		return y;
 	}
 	
 	public void draw(PApplet p) {
