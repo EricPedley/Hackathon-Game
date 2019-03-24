@@ -52,11 +52,11 @@ public class Character {
 		int tileY1 = (int)Math.floor((getHitbox().y+speed)/Room.TILE_SIZE);
 		int tileY2 = tileY1+1;
 		int tileY3 = (int)Math.floor((hitbox.y+hitbox.height-speed)/Room.TILE_SIZE);
-		if(environment.tileAt(tileX,tileY1).getType() < 9)
+		if(environment.tileAt(tileX,tileY1).getType() == 1)
 			return;
-		else if(environment.tileAt(tileX,tileY2).getType() < 9)
+		else if(environment.tileAt(tileX,tileY2).getType() == 1)
 			return;
-		else if(environment.tileAt(tileX,tileY3).getType() < 9)
+		else if(environment.tileAt(tileX,tileY3).getType() == 2)
 			return;
 		else
 			hitbox.x+=speed;
@@ -68,11 +68,11 @@ public class Character {
 		int tileY1 = (int)Math.floor((getHitbox().y+speed)/Room.TILE_SIZE);
 		int tileY2 = tileY1+1;
 		int tileY3 = (int)Math.floor((hitbox.y+hitbox.height-speed)/Room.TILE_SIZE);
-		if(environment.tileAt(tileX,tileY1).getType() < 9)
+		if(environment.tileAt(tileX,tileY1).getType() == 1)
 			return;
-		else if(environment.tileAt(tileX,tileY2).getType() < 9)
+		else if(environment.tileAt(tileX,tileY2).getType() == 1)
 			return;
-		else if(environment.tileAt(tileX,tileY3).getType() < 9)
+		else if(environment.tileAt(tileX,tileY3).getType() == 2)
 			return;
 		else
 			hitbox.x-=speed;
@@ -83,11 +83,11 @@ public class Character {
 		int tileX1 = (int) Math.floor((hitbox.x+(1-2*direction)*speed)/Room.TILE_SIZE);
 		int tileX2 = tileX1+1;
 		int tileX3 = (int) Math.floor((hitbox.x+hitbox.width-speed)/Room.TILE_SIZE);
-		if(environment.tileAt(tileX1,tileY).getType() < 9) {
+		if(environment.tileAt(tileX1,tileY).getType() == 1) {
 			return;
-		}else if(environment.tileAt(tileX2,tileY).getType() < 9) {
+		}else if(environment.tileAt(tileX2,tileY).getType() == 1) {
 			return;
-		}else if(environment.tileAt(tileX3,tileY).getType() < 9) {
+		}else if(environment.tileAt(tileX3,tileY).getType() == 2) {
 			return;
 		}else
 			hitbox.y-=speed;
