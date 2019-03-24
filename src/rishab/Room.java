@@ -211,12 +211,17 @@ public class Room {
 			h.checkHit(enemyProjectiles.get(i));
 		}
 		
-		for(Projectile proj: myProjectiles) {
+		for(int c=0;c<myProjectiles.size();c++) {
+			Projectile proj = myProjectiles.get(c);
 			proj.draw(p);
+			if(proj.getXPos()<0||proj.getXPos()>x*TILE_SIZE||proj.getYPos()<0||proj.getYPos()>y*TILE_SIZE)
+				myProjectiles.remove(c);
 		}
-		for(Projectile proj: enemyProjectiles) {
+		for(int c=0;c<enemyProjectiles.size();c++) {
+			Projectile proj = enemyProjectiles.get(c);
 			proj.draw(p);
-			
+			if(proj.getXPos()<0||proj.getXPos()>x*TILE_SIZE||proj.getYPos()<0||proj.getYPos()>y*TILE_SIZE)
+				enemyProjectiles.remove(c);
 		}
 		
 	}
