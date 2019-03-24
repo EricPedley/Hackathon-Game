@@ -21,7 +21,7 @@ public class Room {
 	private String fs = System.getProperty("file.separator");
 	public final PImage bulletImage;
 	
-	//constuctor
+	//Constuctors
 	public Room(PApplet p) {
 		//tileType = new int [x][y];
 		assignIndices(p);
@@ -37,6 +37,7 @@ public class Room {
 		assignIndices(p);
 	}
 	
+	//Methods
 	public void assignIndices(PApplet p) {
 		tileIndices[0] = new Tile(p.loadImage("Images"+fs+"Map"+fs+"Wall"+fs+"LeftRockWall.gif"),0);
 		tileIndices[1] = new Tile(p.loadImage("Images"+fs+"Map"+fs+"Wall"+fs+"RightRockWall.gif"),1);
