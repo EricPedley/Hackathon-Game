@@ -90,9 +90,10 @@ public class Room {
 					while (in.hasNext()) {
 						String line = in.nextLine();
 						for(int i = 0; line.indexOf(',') != -1; line = line.substring(line.indexOf(',') + 1) ) {
-							i++;
+							
 							
 							tileType[i][count] = Integer.parseInt(line.substring(0,line.indexOf(',')));
+							i++;
 							//System.out.println(gameData[i][count]);
 						}
 						count++;
