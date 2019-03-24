@@ -38,6 +38,12 @@ public class Character {
 	
 	public void draw(PApplet marker) {//Change!
 		marker.image(img, (float)hitbox.x, (float)hitbox.y);
+		marker.pushMatrix();
+		marker.noFill();
+		marker.rect((float)(hitbox.x-20),(float)(hitbox.y-30),100,20);
+		marker.fill(0,255,0);
+		marker.rect((float)(hitbox.x-20),(float)(hitbox.y-30),hp/10f*100,20);
+		marker.popMatrix();
 	}
 	
 	public int getDirection() {

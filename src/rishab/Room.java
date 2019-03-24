@@ -47,7 +47,7 @@ public class Room {
 		}
 
 		//bulletImage = ImageLoader.RED_PROJECTILE;
-		readData("Levels"+fs+"Level"+1+".txt");
+		//readData("Levels"+fs+"Level"+1+".txt");
 
 		
 	}

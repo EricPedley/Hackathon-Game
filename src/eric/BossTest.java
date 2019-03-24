@@ -78,16 +78,23 @@ public class BossTest extends PApplet {
 		r.draw(this);
 		h.draw(this);*/
 		translate(width/2  -(float)h.getHitbox().x ,r.getY()/4 * r.TILE_SIZE-(float)h.getHitbox().y);
-		
-		if(h.getHitbox().x<width/2)
+		transX+=width/2  -(float)h.getHitbox().x;
+		transY+=r.getY()/4 * r.TILE_SIZE-(float)h.getHitbox().y;
+		if(h.getHitbox().x<width/2) {
 			translate((float)(h.getHitbox().x-width/2),0);
-		if(h.getHitbox().y<height/2)
+			transX+=(float)(h.getHitbox().x-width/2);
+		}
+		if(h.getHitbox().y<height/2) {
 			translate(0,(float)(h.getHitbox().y-height/2));
+			transY+=(float)(h.getHitbox().y-height/2);
+		}
 		if(r.getX()*Room.TILE_SIZE-h.getHitbox().x<width/2) {
 			translate((float)(-(r.getX()*Room.TILE_SIZE-h.getHitbox().x)+width/2),0);
+			transX+=(float)(-(r.getX()*Room.TILE_SIZE-h.getHitbox().x)+width/2);
 		}
 		if(r.getY()*Room.TILE_SIZE-h.getHitbox().y<height/2) {
 			translate(0,(float)(-(r.getY()*Room.TILE_SIZE-h.getHitbox().y)+height/2));
+			transY+=(float)(-(r.getY()*Room.TILE_SIZE-h.getHitbox().y)+height/2);
 		}
 		background(255);
 		r.draw(this);
