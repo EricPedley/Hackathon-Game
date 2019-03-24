@@ -2,10 +2,12 @@ package eric;
 
 import processing.core.PApplet;
 import processing.core.PImage;
+import rishab.Map;
 import rishab.Room;
 
 public class DrawingSurface extends PApplet {
-	
+
+		private Map m = new Map();
 		private boolean[] keys = new boolean[500];
 		private static String fS = System.getProperty("file.separator");
 		private Hero h;
