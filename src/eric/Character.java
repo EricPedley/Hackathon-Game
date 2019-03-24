@@ -44,14 +44,14 @@ public class Character {
 		int tileX = (int)(hitbox.x+hitbox.width)/Room.TILE_SIZE;
 		int tileY1 = (int)Math.ceil(hitbox.y/Room.TILE_SIZE);
 		int tileY2 = (int)Math.ceil((hitbox.y+hitbox.height)/Room.TILE_SIZE);
-		if(tileX>=environment.getX()||tileY1>=environment.getY()||tileY2>=environment.getY())
-			return;
 		if(environment.tileAt(tileX,tileY1).getType() == 0)
 			return;
 		else if(environment.tileAt(tileX,tileY2).getType() == 0)
 			return;
 		else
 			hitbox.x+=speed;
+		marker.rect(tileX*Room.TILE_SIZE,tileY1*Room.TILE_SIZE,Room.TILE_SIZE,Room.TILE_SIZE);
+		marker.rect(tileX*Room.TILE_SIZE,tileY2*Room.TILE_SIZE,Room.TILE_SIZE,Room.TILE_SIZE);
 	}
 	
 	public void moveLeft(PApplet marker) {
