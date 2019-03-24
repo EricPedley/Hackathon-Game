@@ -40,10 +40,10 @@ public class Character {
 	}
 	
 	public void shoot(double targetX, double targetY, boolean isHero) {
-		double angle = Math.atan((targetY-hitbox.y)/(targetX-hitbox.x));
-		if((targetX-hitbox.x)<0)
+		double angle = Math.atan((targetY-hitbox.y-50)/(targetX-hitbox.x-69*direction));
+		if((targetX-hitbox.x-69*direction)<0)
 			angle+=Math.PI;
-		environment.addProjectile(new Projectile((float)hitbox.x,(float)hitbox.y,10,(float)angle,10, environment.bulletImage),isHero);
+		environment.addProjectile(new Projectile((float)hitbox.x+69*direction,(float)hitbox.y+50,10,(float)angle,10, environment.bulletImage),isHero);
 	}
 	
 	public void moveRight() {
