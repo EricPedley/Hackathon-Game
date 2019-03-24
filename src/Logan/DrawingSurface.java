@@ -19,7 +19,7 @@ public class DrawingSurface extends PApplet {
 	
 	Boss boss;
 	ArrayList<Projectile> projectiles = new ArrayList<Projectile>();
-	PImage[] images = new PImage[3];
+	PImage[] images = new PImage[4];
 	
 	public DrawingSurface() {
 		
@@ -29,6 +29,7 @@ public class DrawingSurface extends PApplet {
 	// The statements in the setup() function 
 	// execute once when the program begins
 	public void setup() {
+		ImageLoader.setUp(this);
 		images[0] = this.loadImage("Images" + fs + "Projectiles" + fs + "Red Projectile.gif");
 		images[1] = this.loadImage("Images" + fs + "Projectiles" + fs + "Green Projectile.gif");
 		images[2] = this.loadImage("Images" + fs + "Projectiles" + fs + "Purple Star.gif");
