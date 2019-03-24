@@ -37,8 +37,8 @@ public class Room {
 		tileIndices[4] = new Tile(p.loadImage("Images"+fs+"Map"+fs+"Wall"+fs+"RockWallBack.gif"),4);
 		tileIndices[5] = new Tile(p.loadImage("Images"+fs+"Map"+fs+"Wall"+fs+"InwardRockCornerBottomLeft.gif"),5);
 		tileIndices[6] = new Tile(p.loadImage("Images"+fs+"Map"+fs+"Wall"+fs+"InwardRockCornerBottomRight.gif"),6);
-		tileIndices[7] = new Tile(p.loadImage("Images"+fs+"Map"+fs+"Wall"+fs+"OutwardRockCornerTopRight.gif"),7);
-		tileIndices[8] = new Tile(p.loadImage("Images"+fs+"Map"+fs+"Wall"+fs+"OutwardRockCornerTopLeft.gif"),8);
+		tileIndices[7] = new Tile(p.loadImage("Images"+fs+"Map"+fs+"Wall"+fs+"InwardRockCornerTopLeft.gif"),7);
+		tileIndices[8] = new Tile(p.loadImage("Images"+fs+"Map"+fs+"Wall"+fs+"InwardRockCornerTopRight.gif"),8);
 		tileIndices[9] = new Tile(p.loadImage("Images"+fs+"Map"+fs+"Floor"+fs+"1Tile.gif"),9);
 	}
 	
