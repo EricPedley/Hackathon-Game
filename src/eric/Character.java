@@ -105,7 +105,7 @@ public class Character {
 		}else if(environment.tileAt(tileX3,tileY).getType() ==1) {
 			return;
 		}else if(environment.tileAt(tileX3,tileY).getType() ==2) {
-				
+				environment.getMap().changeActiveRoom(0, -1);
 			}else
 			hitbox.y+=speed;
 	}

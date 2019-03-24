@@ -1,5 +1,6 @@
 package rishab;
 
+import eric.BossRoom;
 import processing.core.PApplet;
 
 public class Map {
@@ -10,16 +11,22 @@ public class Map {
 	
 	public Map() {
 		map = new Room[5][5];
+		for(int p=0;p<5;p++) {
+			for(int q=0;q<5;q++) {
+				map[p][q] = new Room(p*5+1+q,3);
+				if(p*5+1+q==5)
+					map[p][q] = new BossRoom();
+			}
+		}
 		activeRoom = map[x][y];
 	}
 	
-	public Map(int rows , int cols) {
-		map = new Room[rows][cols];	
-		activeRoom = map[0][0];
-	}
-	
 	public void changeActiveRoom(int x , int y) {
-		activeRoom = map[this.x+=x][this.y+=y];
+		if(this.x>0&&this.x<4)
+			this.x+=x;
+		if(this.y>0&&this.y<4)
+			this.y+=y;
+		activeRoom = map[this.x][this.y];
 	}
 	
 	public Room getActiveRoom() {
