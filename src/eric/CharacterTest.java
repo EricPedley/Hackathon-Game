@@ -7,22 +7,22 @@ import javax.swing.JFrame;
 import processing.awt.PSurfaceAWT;
 import processing.core.PApplet;
 import processing.core.PImage;
+import rishab.Map;
 import rishab.Room;
 
 public class CharacterTest extends PApplet {
+	Map m;
 	boolean[] keys = new boolean[500];
 	static String fS = System.getProperty("file.separator");
 	Hero h;
-	Room r;
 	float startX = 300, startY = 200;
 	float transX, transY;
 	
 	public void setup() {//character image is 14x36 pixels
 		 PImage leftImage = loadImage("Images"+fS+"Characters"+fS+"Main Character"+fS+"Main Character Left.gif");
 		 PImage rightImage = loadImage("Images"+fS+"Characters"+fS+"Main Character"+fS+"Main Character Right.gif");
-		 
-		r = new Room(this);
-		h = new Hero(startX,startY,leftImage,rightImage,r);
+			m = new Map();
+		h = new Hero(startX,startY,m.getActiveRoom());
 	}
 	
 	public void draw() {
@@ -30,15 +30,16 @@ public class CharacterTest extends PApplet {
 		transY=0;
 		translate(0,-11);
 		transY-=11;
-		if(keys[37]) {
+		if(keys[65]) {
 			h.moveLeft();
-		}  if(keys[38]) {
+		}  if(keys[87]) {
 			h.moveUp();
-		}  if(keys[39]) {
+		}  if(keys[68]) {
 			h.moveRight();
-		}  if(keys[40]) {
+		}  if(keys[83]) {
 			h.moveDown();
 		}
+		Room r = m.getActiveRoom();
 		translate(startX-(float)h.getHitbox().x,startY-(float)h.getHitbox().y);
 		transX+=startX-(float)h.getHitbox().x;
 		transY+=startY-(float)h.getHitbox().y;
@@ -72,7 +73,6 @@ public class CharacterTest extends PApplet {
 	}
 	
 	public void mouseClicked() {
-		System.out.println(transX);
 		h.shoot(mouseX-transX, mouseY-transY, true);
 	}
 	

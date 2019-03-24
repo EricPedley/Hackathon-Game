@@ -1,5 +1,7 @@
 package rishab;
 
+import processing.core.PApplet;
+
 public class Map {
 	
 	private Room[][] map;
@@ -18,5 +20,13 @@ public class Map {
 	
 	public void changeActiveRoom(int x , int y) {
 		activeRoom = map[this.x+=x][this.y+=y];
+	}
+	
+	public Room getActiveRoom() {
+		return activeRoom;
+	}
+	
+	public void draw(PApplet p) {
+		activeRoom.draw(p);
 	}
 }
