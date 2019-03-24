@@ -178,7 +178,7 @@ public class Room {
 			p.translate(-x * TILE_SIZE, TILE_SIZE);
 		}
 		p.popMatrix();
-		for(Enemy e: enemies) {
+		for(Enemy e: enemies) {//ughh
 			e.act(h);
 			e.checkHits(myProjectiles);
 			e.draw(this);
