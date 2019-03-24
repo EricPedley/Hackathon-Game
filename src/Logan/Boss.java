@@ -11,4 +11,12 @@ public class Boss {
 		this.y = y;
 		
 	}
+	
+	public void act() {
+		
+	}
+	
+	public void draw(PApplet p) {
+		
+	}
 }
