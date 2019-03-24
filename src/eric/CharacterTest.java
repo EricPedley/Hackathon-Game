@@ -16,13 +16,12 @@ public class CharacterTest extends PApplet {
 	Room r;
 	public void settings() {
 		size(400,400);
-		
 	}
 	
 	public void setup() {//character image is 14x36 pixels
 		 PImage leftImage = loadImage("Images"+fS+"Characters"+fS+"Main Character"+fS+"Main Character Left.gif");
 		 PImage rightImage = loadImage("Images"+fS+"Characters"+fS+"Main Character"+fS+"Main Character Right.gif");
-
+		 
 		r = new Room(this);
 		h = new Hero(200,200,leftImage,rightImage,r);
 	}
