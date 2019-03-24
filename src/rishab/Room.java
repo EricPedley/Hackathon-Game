@@ -13,15 +13,15 @@ public class Room {
 	
 	private int[][] tileType;
 	private int x = 42, y = 15;
-	private Tile[] tileIndices = new Tile[6];
+	private Tile[] tileIndices = new Tile[10];
 	private ArrayList<Projectile> projectiles;
-	public static final int TILE_SIZE = 32; 
+	public static final int TILE_SIZE = 64; 
 	private String fs = System.getProperty("file.separator");
 	
 	public Room(PApplet p) {
 		//tileType = new int [x][y];
 		assignIndices(p);
-		readData("Levels"+fs+"Level1.txt",tileType);
+		readData("Levels"+fs+"Level1.txt");
 		//assignTiles();
 		
 	}
@@ -35,7 +35,11 @@ public class Room {
 		tileIndices[2] = new Tile(p.loadImage("Images"+fs+"Map"+fs+"Wall"+fs+"RockTopFront.gif"),2);
 		tileIndices[3] = new Tile(p.loadImage("Images"+fs+"Map"+fs+"Wall"+fs+"RockBottomFront.gif"),3);
 		tileIndices[4] = new Tile(p.loadImage("Images"+fs+"Map"+fs+"Wall"+fs+"RockWallBack.gif"),4);
-		tileIndices[5] = new Tile(p.loadImage("Images"+fs+"Map"+fs+"Floor"+fs+"1Tile.gif"),5);
+		tileIndices[5] = new Tile(p.loadImage("Images"+fs+"Map"+fs+"Wall"+fs+"InwardRockCornerBottomLeft.gif"),5);
+		tileIndices[6] = new Tile(p.loadImage("Images"+fs+"Map"+fs+"Wall"+fs+"InwardRockCornerBottomRight.gif"),6);
+		tileIndices[7] = new Tile(p.loadImage("Images"+fs+"Map"+fs+"Wall"+fs+"OutwardRockCornerTopRight.gif"),7);
+		tileIndices[8] = new Tile(p.loadImage("Images"+fs+"Map"+fs+"Wall"+fs+"OutwardRockCornerTopLeft.gif"),8);
+		tileIndices[9] = new Tile(p.loadImage("Images"+fs+"Map"+fs+"Floor"+fs+"1Tile.gif"),9);
 	}
 	
 	/*public void assignTiles() {
@@ -65,7 +69,7 @@ public class Room {
 	}*/
 
 	
-	public void readData (String filename, int[][] gameData) {
+	private void readData (String filename) {
 		File dataFile = new File(filename);
 
 		if (dataFile.exists()) {
@@ -77,17 +81,19 @@ public class Room {
 					reader = new FileReader(dataFile);
 					in = new Scanner(reader);
 					String s = in.nextLine();
-					//x = Integer.parseInt(s.substring(0, s.indexOf(',')));
+					x = Integer.parseInt(s.substring(0, s.indexOf(',')));
 					s = s.substring(s.indexOf(',') + 1); 
-					//y = Integer.parseInt(s.substring(0, s.indexOf(',')));
-					//gameData= new int[x][y];
+					y = Integer.parseInt(s.substring(0, s.indexOf(',')));
+					tileType = new int[x][y];
 					
 
 					while (in.hasNext()) {
 						String line = in.nextLine();
 						for(int i = 0; line.indexOf(',') != -1; line = line.substring(line.indexOf(',') + 1) ) {
 							i++;
-							gameData[i][count] = Integer.parseInt(line.substring(0,line.indexOf(',')));
+							
+							tileType[i][count] = Integer.parseInt(line.substring(0,line.indexOf(',')));
+							//System.out.println(gameData[i][count]);
 						}
 						count++;
 					}
@@ -123,9 +129,11 @@ public class Room {
 	public void draw(PApplet p) {
 		
 		p.pushMatrix();
+		tileIndices[0].draw(p, TILE_SIZE);
 		for(int cols = 0; cols < y;cols++) {
 			
 			for(int rows = 0; rows < x; rows++) {
+				//System.out.println(tileType[rows][cols]);
 				tileIndices[tileType[rows][cols]].draw(p, TILE_SIZE);
 				p.translate(TILE_SIZE, 0);
 			}
