@@ -15,6 +15,7 @@ public class BossRoom extends Room {
 	
 	public void setHero(Hero h) {
 		super.setHero(h);
+		boss.setHero(h);
 	}
 	public void draw(PApplet p) {
 		super.draw(p);

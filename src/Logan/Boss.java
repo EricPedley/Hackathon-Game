@@ -1,13 +1,12 @@
 package Logan;
 
-import processing.core.PApplet;
-import processing.core.PImage;
-
 import java.util.ArrayList;
 
 import Adele.Projectile;
 import Phys2D.Circle;
 import Phys2D.Rectangle;
+import eric.Hero;
+import processing.core.PApplet;
 
 public class Boss {
 
@@ -20,10 +19,16 @@ public class Boss {
 	private float width, height;
 	private float scalar = 10;
 	private ArrayList<Explosion> explosions;
+	private Hero h;
 
 	public Boss() {
+		this.h=h;
 		explosions = new ArrayList<Explosion>();
 
+	}
+	
+	public void setHero(Hero h) {
+		this.h=h;
 	}
 
 	public void testShot(ArrayList<Projectile> p) {
@@ -104,8 +109,8 @@ public class Boss {
 					}
 				}
 				if (frame % 60 == 0) {
-					float dir = PApplet.atan((p.mouseY - y) / (p.mouseX - x));
-					if (p.mouseX < x)
+					float dir = PApplet.atan(((float)h.getHitbox().y - y) / ((float)h.getHitbox().x - x));
+					if ((float)h.getHitbox().x < x)
 						dir += PApplet.PI;
 					projectiles.add(new SineProjectile(x, y, 5f * scalar, dir, 5, ImageLoader.GREEN_PROJECTILE, 20, 120, 0));
 					projectiles.add(new SineProjectile(x, y, 5f * scalar, dir, 5, ImageLoader.GREEN_PROJECTILE, -20, 120, 0));
@@ -130,8 +135,8 @@ public class Boss {
 							ImageLoader.PURPLE_STAR));
 				}
 				if (frame % 120 == 0) {
-					float dir = PApplet.atan((p.mouseY - y) / (p.mouseX - x));
-					if (p.mouseX < x)
+					float dir = PApplet.atan(((float)h.getHitbox().y - y) / ((float)h.getHitbox().x - x));
+					if ((float)h.getHitbox().x < x)
 						dir += PApplet.PI;
 					projectiles.add(new Projectile(x, y, 3 * scalar, dir, 10, ImageLoader.YELLOW_STAR));
 					projectiles.add(new Projectile(x, y, 3 * scalar, dir + PApplet.THIRD_PI / 2, 10, ImageLoader.YELLOW_STAR));
@@ -163,16 +168,16 @@ public class Boss {
 			}
 			if (frame < 1200) {
 				if (frame % 60 == 0) {
-					float dir = PApplet.atan((p.mouseY - y) / (p.mouseX - x));
-					if (p.mouseX < x)
+					float dir = PApplet.atan(((float)h.getHitbox().y - y) / ((float)h.getHitbox().x - x));
+					if ((float)h.getHitbox().x < x)
 						dir += PApplet.PI;
 					projectiles.add(new SineProjectile(x, y, 0.5f * scalar, dir, 5, ImageLoader.GREEN_PROJECTILE, 20, 120, 0));
 					projectiles.add(new SineProjectile(x, y, 0.5f * scalar, dir, 5, ImageLoader.GREEN_PROJECTILE, -20, 120, 0));
 				}
 			} else {
 				if (frame % 120 == 0) {
-					float dir = PApplet.atan((p.mouseY - y) / (p.mouseX - x));
-					if (p.mouseX < x)
+					float dir = PApplet.atan(((float)h.getHitbox().y - y) / ((float)h.getHitbox().x - x));
+					if ((float)h.getHitbox().x < x)
 						dir += PApplet.PI;
 					projectiles.add(new Projectile(x, y, 3 * scalar, dir, 10, ImageLoader.YELLOW_STAR));
 					projectiles.add(new Projectile(x, y, 3 * scalar, dir + PApplet.THIRD_PI / 2, 10, ImageLoader.YELLOW_STAR));
@@ -183,8 +188,8 @@ public class Boss {
 		} else if (health > MAX_HEALTH / 4) {
 			if (frame < 1200) {
 				if (frame % 120 == 0) {
-					float dir = PApplet.atan((p.mouseY - y) / (p.mouseX - x));
-					if (p.mouseX < x)
+					float dir = PApplet.atan(((float)h.getHitbox().y - y) / ((float)h.getHitbox().x - x));
+					if ((float)h.getHitbox().x < x)
 						dir += PApplet.PI;
 					projectiles.add(new Projectile(x, y, 3 * scalar, dir, 10, ImageLoader.YELLOW_STAR));
 					projectiles.add(new Projectile(x, y, 3 * scalar, dir + PApplet.THIRD_PI / 2, 10, ImageLoader.YELLOW_STAR));
@@ -192,8 +197,8 @@ public class Boss {
 
 					float x2 = x - p.width / 6;
 					float y2 = y + p.width / 12;
-					dir = PApplet.atan((p.mouseY - y2) / (p.mouseX - x2));
-					if (p.mouseX < x2)
+					dir = PApplet.atan(((float)h.getHitbox().y - y2) / ((float)h.getHitbox().x - x2));
+					if ((float)h.getHitbox().x < x2)
 						dir += PApplet.PI;
 					projectiles.add(new Projectile(x2, y2, 3 * scalar, dir, 10, ImageLoader.YELLOW_STAR));
 					projectiles.add(new Projectile(x2, y2, 3 * scalar, dir + PApplet.THIRD_PI / 2, 10, ImageLoader.YELLOW_STAR));
@@ -201,8 +206,8 @@ public class Boss {
 
 					x2 = x + p.width / 6;
 					y2 = y + p.width / 12;
-					dir = PApplet.atan((p.mouseY - y2) / (p.mouseX - x2));
-					if (p.mouseX < x2)
+					dir = PApplet.atan(((float)h.getHitbox().y - y2) / ((float)h.getHitbox().x - x2));
+					if ((float)h.getHitbox().x < x2)
 						dir += PApplet.PI;
 					projectiles.add(new Projectile(x2, y2, 3 * scalar, dir, 10, ImageLoader.YELLOW_STAR));
 					projectiles.add(new Projectile(x2, y2, 3 * scalar, dir + PApplet.THIRD_PI / 2, 10, ImageLoader.YELLOW_STAR));
@@ -210,8 +215,8 @@ public class Boss {
 
 					x2 = x + p.width / 6;
 					y2 = y - p.width / 12;
-					dir = PApplet.atan((p.mouseY - y2) / (p.mouseX - x2));
-					if (p.mouseX < x2)
+					dir = PApplet.atan(((float)h.getHitbox().y - y2) / ((float)h.getHitbox().x - x2));
+					if ((float)h.getHitbox().x < x2)
 						dir += PApplet.PI;
 					projectiles.add(new Projectile(x2, y2, 3 * scalar, dir, 10, ImageLoader.YELLOW_STAR));
 					projectiles.add(new Projectile(x2, y2, 3 * scalar, dir + PApplet.THIRD_PI / 2, 10, ImageLoader.YELLOW_STAR));
@@ -219,8 +224,8 @@ public class Boss {
 
 					x2 = x - p.width / 6;
 					y2 = y - p.width / 12;
-					dir = PApplet.atan((p.mouseY - y2) / (p.mouseX - x2));
-					if (p.mouseX < x2)
+					dir = PApplet.atan(((float)h.getHitbox().y - y2) / ((float)h.getHitbox().x - x2));
+					if ((float)h.getHitbox().x < x2)
 						dir += PApplet.PI;
 					projectiles.add(new Projectile(x2, y2, 3 * scalar, dir, 10, ImageLoader.YELLOW_STAR));
 					projectiles.add(new Projectile(x2, y2, 3 * scalar, dir + PApplet.THIRD_PI / 2, 10, ImageLoader.YELLOW_STAR));
@@ -228,40 +233,40 @@ public class Boss {
 				}
 			} else {
 				if (frame % 60 == 0) {
-					float dir = PApplet.atan((p.mouseY - y) / (p.mouseX - x));
-					if (p.mouseX < x)
+					float dir = PApplet.atan(((float)h.getHitbox().y - y) / ((float)h.getHitbox().x - x));
+					if ((float)h.getHitbox().x < x)
 						dir += PApplet.PI;
 					projectiles.add(new SineProjectile(x, y, 1f * scalar, dir, 5, ImageLoader.GREEN_PROJECTILE, 20, 120, 0));
 					projectiles.add(new SineProjectile(x, y, 1f * scalar, dir, 5, ImageLoader.GREEN_PROJECTILE, -20, 120, 0));
 
 					float x2 = x - p.width / 6;
 					float y2 = y + p.width / 12;
-					dir = PApplet.atan((p.mouseY - y2) / (p.mouseX - x2));
-					if (p.mouseX < x2)
+					dir = PApplet.atan(((float)h.getHitbox().y - y2) / ((float)h.getHitbox().x - x2));
+					if ((float)h.getHitbox().x < x2)
 						dir += PApplet.PI;
 					projectiles.add(new SineProjectile(x2, y2, 1f * scalar, dir, 5, ImageLoader.GREEN_PROJECTILE, 20, 120, 0));
 					projectiles.add(new SineProjectile(x2, y2, 1f * scalar, dir, 5, ImageLoader.GREEN_PROJECTILE, -20, 120, 0));
 
 					x2 = x + p.width / 6;
 					y2 = y + p.width / 12;
-					dir = PApplet.atan((p.mouseY - y2) / (p.mouseX - x2));
-					if (p.mouseX < x2)
+					dir = PApplet.atan(((float)h.getHitbox().y - y2) / ((float)h.getHitbox().x - x2));
+					if ((float)h.getHitbox().x < x2)
 						dir += PApplet.PI;
 					projectiles.add(new SineProjectile(x2, y2, 1f * scalar, dir, 5, ImageLoader.GREEN_PROJECTILE, 20, 120, 0));
 					projectiles.add(new SineProjectile(x2, y2, 1f * scalar, dir, 5, ImageLoader.GREEN_PROJECTILE, -20, 120, 0));
 
 					x2 = x + p.width / 6;
 					y2 = y - p.width / 12;
-					dir = PApplet.atan((p.mouseY - y2) / (p.mouseX - x2));
-					if (p.mouseX < x2)
+					dir = PApplet.atan(((float)h.getHitbox().y - y2) / ((float)h.getHitbox().x - x2));
+					if ((float)h.getHitbox().x < x2)
 						dir += PApplet.PI;
 					projectiles.add(new SineProjectile(x2, y2, 1f * scalar, dir, 5, ImageLoader.GREEN_PROJECTILE, 20, 120, 0));
 					projectiles.add(new SineProjectile(x2, y2, 1f * scalar, dir, 5, ImageLoader.GREEN_PROJECTILE, -20, 120, 0));
 
 					x2 = x - p.width / 6;
 					y2 = y - p.width / 12;
-					dir = PApplet.atan((p.mouseY - y2) / (p.mouseX - x2));
-					if (p.mouseX < x2)
+					dir = PApplet.atan(((float)h.getHitbox().y - y2) / ((float)h.getHitbox().x - x2));
+					if ((float)h.getHitbox().x < x2)
 						dir += PApplet.PI;
 					projectiles.add(new SineProjectile(x2, y2, 1f * scalar, dir, 5, ImageLoader.GREEN_PROJECTILE, 20, 120, 0));
 					projectiles.add(new SineProjectile(x2, y2, 1f * scalar, dir, 5, ImageLoader.GREEN_PROJECTILE, -20, 120, 0));
@@ -271,8 +276,8 @@ public class Boss {
 		} else if (health > 0) {
 			if (frame < 1200) {
 				if (frame % 120 == 0) {
-					float dir = PApplet.atan((p.mouseY - y) / (p.mouseX - x));
-					if (p.mouseX < x)
+					float dir = PApplet.atan(((float)h.getHitbox().y - y) / ((float)h.getHitbox().x - x));
+					if ((float)h.getHitbox().x < x)
 						dir += PApplet.PI;
 					projectiles.add(new Projectile(x, y, 3 * scalar, dir, 10, ImageLoader.YELLOW_STAR));
 					projectiles.add(new Projectile(x, y, 3 * scalar, dir + PApplet.THIRD_PI / 2, 10, ImageLoader.YELLOW_STAR));
@@ -280,8 +285,8 @@ public class Boss {
 
 					float x2 = x - p.width / 6;
 					float y2 = y + p.width / 12;
-					dir = PApplet.atan((p.mouseY - y2) / (p.mouseX - x2));
-					if (p.mouseX < x2)
+					dir = PApplet.atan(((float)h.getHitbox().y - y2) / ((float)h.getHitbox().x - x2));
+					if ((float)h.getHitbox().x < x2)
 						dir += PApplet.PI;
 					projectiles.add(new Projectile(x2, y2, 3 * scalar, dir, 10, ImageLoader.YELLOW_STAR));
 					projectiles.add(new Projectile(x2, y2, 3 * scalar, dir + PApplet.THIRD_PI / 2, 10, ImageLoader.YELLOW_STAR));
@@ -289,8 +294,8 @@ public class Boss {
 
 					x2 = x + p.width / 6;
 					y2 = y + p.width / 12;
-					dir = PApplet.atan((p.mouseY - y2) / (p.mouseX - x2));
-					if (p.mouseX < x2)
+					dir = PApplet.atan(((float)h.getHitbox().y - y2) / ((float)h.getHitbox().x - x2));
+					if ((float)h.getHitbox().x < x2)
 						dir += PApplet.PI;
 					projectiles.add(new Projectile(x2, y2, 3 * scalar, dir, 10, ImageLoader.YELLOW_STAR));
 					projectiles.add(new Projectile(x2, y2, 3 * scalar, dir + PApplet.THIRD_PI / 2, 10, ImageLoader.YELLOW_STAR));
@@ -298,8 +303,8 @@ public class Boss {
 
 					x2 = x + p.width / 6;
 					y2 = y - p.width / 12;
-					dir = PApplet.atan((p.mouseY - y2) / (p.mouseX - x2));
-					if (p.mouseX < x2)
+					dir = PApplet.atan(((float)h.getHitbox().y - y2) / ((float)h.getHitbox().x - x2));
+					if ((float)h.getHitbox().x < x2)
 						dir += PApplet.PI;
 					projectiles.add(new Projectile(x2, y2, 3 * scalar, dir, 10, ImageLoader.YELLOW_STAR));
 					projectiles.add(new Projectile(x2, y2, 3 * scalar, dir + PApplet.THIRD_PI / 2, 10, ImageLoader.YELLOW_STAR));
@@ -307,48 +312,48 @@ public class Boss {
 
 					x2 = x - p.width / 6;
 					y2 = y - p.width / 12;
-					dir = PApplet.atan((p.mouseY - y2) / (p.mouseX - x2));
-					if (p.mouseX < x2)
+					dir = PApplet.atan(((float)h.getHitbox().y - y2) / ((float)h.getHitbox().x - x2));
+					if ((float)h.getHitbox().x < x2)
 						dir += PApplet.PI;
 					projectiles.add(new Projectile(x2, y2, 3 * scalar, dir, 10, ImageLoader.YELLOW_STAR));
 					projectiles.add(new Projectile(x2, y2, 3 * scalar, dir + PApplet.THIRD_PI / 2, 10, ImageLoader.YELLOW_STAR));
 					projectiles.add(new Projectile(x2, y2, 3 * scalar, dir - PApplet.THIRD_PI / 2, 10, ImageLoader.YELLOW_STAR));
 				}
 				if (frame % 60 == 0) {
-					float dir = PApplet.atan((p.mouseY - y) / (p.mouseX - x));
-					if (p.mouseX < x)
+					float dir = PApplet.atan(((float)h.getHitbox().y - y) / ((float)h.getHitbox().x - x));
+					if ((float)h.getHitbox().x < x)
 						dir += PApplet.PI;
 					projectiles.add(new SineProjectile(x, y, 1f * scalar, dir, 5, ImageLoader.GREEN_PROJECTILE, 20, 120, 0));
 					projectiles.add(new SineProjectile(x, y, 1f * scalar, dir, 5, ImageLoader.GREEN_PROJECTILE, -20, 120, 0));
 
 					float x2 = x - p.width / 6;
 					float y2 = y + p.width / 12;
-					dir = PApplet.atan((p.mouseY - y2) / (p.mouseX - x2));
-					if (p.mouseX < x2)
+					dir = PApplet.atan(((float)h.getHitbox().y - y2) / ((float)h.getHitbox().x - x2));
+					if ((float)h.getHitbox().x < x2)
 						dir += PApplet.PI;
 					projectiles.add(new SineProjectile(x2, y2, 1f * scalar, dir, 5, ImageLoader.GREEN_PROJECTILE, 20, 120, 0));
 					projectiles.add(new SineProjectile(x2, y2, 1f * scalar, dir, 5, ImageLoader.GREEN_PROJECTILE, -20, 120, 0));
 
 					x2 = x + p.width / 6;
 					y2 = y + p.width / 12;
-					dir = PApplet.atan((p.mouseY - y2) / (p.mouseX - x2));
-					if (p.mouseX < x2)
+					dir = PApplet.atan(((float)h.getHitbox().y - y2) / ((float)h.getHitbox().x - x2));
+					if ((float)h.getHitbox().x < x2)
 						dir += PApplet.PI;
 					projectiles.add(new SineProjectile(x2, y2, 1f * scalar, dir, 5, ImageLoader.GREEN_PROJECTILE, 20, 120, 0));
 					projectiles.add(new SineProjectile(x2, y2, 1f * scalar, dir, 5, ImageLoader.GREEN_PROJECTILE, -20, 120, 0));
 
 					x2 = x + p.width / 6;
 					y2 = y - p.width / 12;
-					dir = PApplet.atan((p.mouseY - y2) / (p.mouseX - x2));
-					if (p.mouseX < x2)
+					dir = PApplet.atan(((float)h.getHitbox().y - y2) / ((float)h.getHitbox().x - x2));
+					if ((float)h.getHitbox().x < x2)
 						dir += PApplet.PI;
 					projectiles.add(new SineProjectile(x2, y2, 1f * scalar, dir, 5, ImageLoader.GREEN_PROJECTILE, 20, 120, 0));
 					projectiles.add(new SineProjectile(x2, y2, 1f * scalar, dir, 5, ImageLoader.GREEN_PROJECTILE, -20, 120, 0));
 
 					x2 = x - p.width / 6;
 					y2 = y - p.width / 12;
-					dir = PApplet.atan((p.mouseY - y2) / (p.mouseX - x2));
-					if (p.mouseX < x2)
+					dir = PApplet.atan(((float)h.getHitbox().y - y2) / ((float)h.getHitbox().x - x2));
+					if ((float)h.getHitbox().x < x2)
 						dir += PApplet.PI;
 					projectiles.add(new SineProjectile(x2, y2, 1f * scalar, dir, 5, ImageLoader.GREEN_PROJECTILE, 20, 120, 0));
 					projectiles.add(new SineProjectile(x2, y2, 1f * scalar, dir, 5, ImageLoader.GREEN_PROJECTILE, -20, 120, 0));
