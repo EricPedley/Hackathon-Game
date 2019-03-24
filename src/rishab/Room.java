@@ -38,7 +38,7 @@ public class Room {
 		enemies = new ArrayList<Enemy>();
 		PImage[] enemyImages = {};
 		
-		bulletImage = ImageLoader.RED_PROJECTILE;
+		bulletImage = ImageLoader.BLUE_PROJECTILE;
 		readData("Levels"+fs+"Boss.txt");
 		for(int c=0;c<numEnemies;c++) {
 			//System.out.println(numEnemies);
