@@ -19,9 +19,17 @@ public class Character {
 	public Character(double x, double y, double width, double height, PImage image, Room env) {
 		img = image;
 		hitbox = new Rectangle(x,y,width,height);
-		hp=100;
+		hp=5;
 		environment = env;
 		speed=5;
+	}
+	
+	public void setHp(int hp) {
+		this.hp = hp;
+	}
+	
+	public int getHp() {
+		return hp;
 	}
 	
 	public void draw(PApplet marker) {//Change!
@@ -41,7 +49,7 @@ public class Character {
 	
 	public void shoot(double targetX, double targetY, boolean isHero) {
 		double angle = Math.atan((targetY-hitbox.y-50)/(targetX-hitbox.x-69*direction));
-		if((targetX-hitbox.x-69*direction)<0)
+		if((targetX)<hitbox.x+69*direction)
 			angle+=Math.PI;
 		environment.addProjectile(new Projectile((float)hitbox.x+69*direction,(float)hitbox.y+50,10,(float)angle,10, environment.bulletImage),isHero);
 	}

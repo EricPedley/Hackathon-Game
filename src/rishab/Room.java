@@ -181,10 +181,14 @@ public class Room {
 			p.translate(-x * TILE_SIZE, TILE_SIZE);
 		}
 		p.popMatrix();
-		for(Enemy e: enemies) {
-//			e.act(h);
-//			e.checkHits(myProjectiles);
-//			e.draw(this);
+		for(int i = 0; i < enemies.size(); i++) {
+			enemies.get(i).act(h, myProjectiles);
+
+			
+			if(enemies.get(i).isDead())
+				enemies.remove(i);
+			else
+				enemies.get(i).draw(p);
 		}
 		for(Projectile proj: myProjectiles) {
 			proj.draw(p);
@@ -192,6 +196,10 @@ public class Room {
 		for(Projectile proj: enemyProjectiles) {
 			proj.draw(p);
 		}
+	}
+	
+	public Hero getHero() {
+		return h;
 	}
 	
 	public Map getMap() {

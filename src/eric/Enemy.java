@@ -1,6 +1,10 @@
 package eric;
 
 import Logan.ImageLoader;
+
+import java.util.ArrayList;
+
+import Adele.Projectile;
 import processing.core.PApplet;
 import processing.core.PImage;
 import rishab.Room;
@@ -14,6 +18,9 @@ public class Enemy extends Character {
 	 */
 	
 	private int type;
+	private int moveFrame;
+	private int shootFrame;
+	private int direction;
 	public Enemy(double x, double y, int type, Room env) {
 		super(x, y, 23*3,30*3,null, env);
 		this.type = type;
@@ -37,8 +44,29 @@ public class Enemy extends Character {
 		super.draw(marker);
 	}
 	
+	public void act(Hero h, ArrayList<Projectile> proj) {
+		if(shootFrame == 30) {
+			super.shoot(h.getHitbox().x, h.getHitbox().y, false);
+			shootFrame = 0;
+		}
+			
+		if(moveFrame > 60) {
+			if(Math.random() < 0.05) {
+				direction = (int)(Math.random() * 9);
+				moveFrame = 0;
+			}
+		}
+		move();
+		for(int i = 0; i < proj.size(); i++)
+			super.checkHit(proj.get(i));
+	}
+	
+	public boolean isDead() {
+		return super.getHp() <= 0;
+	}
+	
 
-	public void move(int direction) {
+	public void move() {
 		switch(direction) {
 		case 0:
 			super.moveRight();

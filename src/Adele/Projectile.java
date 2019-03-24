@@ -2,6 +2,7 @@ package Adele;
 
 import java.awt.Color;
 
+import Phys2D.Circle;
 import processing.core.PApplet;
 import processing.core.PImage;
 
@@ -76,6 +77,10 @@ public class Projectile
 	public void setVel(float vel) 
 	{
 		velocity = vel;
+	}
+	
+	public Circle getHitBox() {
+		return new Circle(xPos, yPos, radius);
 	}
 	
 	public float getDirection() 

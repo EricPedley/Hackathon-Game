@@ -1,5 +1,6 @@
 package eric;
 
+import Logan.ImageLoader;
 import processing.core.PApplet;
 import processing.core.PImage;
 import rishab.Map;
@@ -16,6 +17,7 @@ public class DrawingSurface extends PApplet {
 		
 		public void setup() {
 			TileImageLoader.loadTileImages(this);
+			ImageLoader.setUp(this);
 			 PImage leftImage = loadImage("Images"+fS+"Characters"+fS+"Main Character"+fS+"Main Character Left.gif");
 			 PImage rightImage = loadImage("Images"+fS+"Characters"+fS+"Main Character"+fS+"Main Character Right.gif");
 			m=new Map();
@@ -44,18 +46,20 @@ public class DrawingSurface extends PApplet {
 		}
 		
 		public void handleKeys() {
-			if(keys[37]) {
+			
+			if(keys[65]) {
 				h.moveLeft();
-			}  if(keys[38]) {
+			}  if(keys[87]) {
 				h.moveUp();
-			}  if(keys[39]) {
+			}  if(keys[68]) {
 				h.moveRight();
-			}  if(keys[40]) {
+			}  if(keys[83]) {
 				h.moveDown();
 			}
 		}
 		
 		public void keyPressed() {
+			//System.out.println(keyCode);
 			keys[keyCode]=true;
 		}
 		
@@ -64,6 +68,6 @@ public class DrawingSurface extends PApplet {
 		}
 		
 		public void mouseClicked() {
-			h.shoot(mouseX, mouseY, true);
+			h.shoot(-startX+(float)h.getHitbox().x+mouseX, -startY+(float)h.getHitbox().y+mouseY, true);
 		}
 }
