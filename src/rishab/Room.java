@@ -8,6 +8,7 @@ import java.util.Scanner;
 
 import Adele.Projectile;
 import processing.core.PApplet;
+import processing.core.PImage;
 
 public class Room { 
 	
@@ -18,15 +19,19 @@ public class Room {
 	private ArrayList<Projectile> enemyProjectiles;
 	public static final int TILE_SIZE = 64; 
 	private String fs = System.getProperty("file.separator");
+	public final PImage bulletImage;
 	
+	//constuctor
 	public Room(PApplet p) {
 		//tileType = new int [x][y];
 		assignIndices(p);
+		bulletImage = p.loadImage("Images"+fs+"Projectiles"+fs+"Red Projectile.gif");
 		readData("Levels"+fs+"Level1.txt");
 		//assignTiles();
 		
 	}
 	public Room(int rows, int cols, PApplet p) {
+		bulletImage = p.loadImage("Images"+fs+"Projectiles"+fs+"Red Projectile.gif");
 		assignIndices(p);
 	}
 	
@@ -126,7 +131,18 @@ public class Room {
 	}
 	
 	public void deleteProjectile(Projectile p) {
+		if(myProjectiles.contains(p))
+			myProjectiles.remove(p);
 		
+		if(enemyProjectiles.contains(p))
+			enemyProjectiles.remove(p);
+	}
+	
+	public void addProjectile(Projectile p,boolean isHero) {
+		if(isHero)
+		myProjectiles.add(p);
+		else
+			enemyProjectiles.add(p);
 	}
 	
 	public int getX() {
