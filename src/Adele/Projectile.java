@@ -3,77 +3,87 @@ package Adele;
 import java.awt.Color;
 
 import processing.core.PApplet;
+import processing.core.PImage;
 
 public class Projectile 
 {
-	private int xPos;
-	private int yPos;
-	private int velocity;
-	private int direction;
-	private int radius;
+
+	
 	private Color color;
 	boolean[] keys = new boolean[500];
-	
-	
-	public Projectile(int xPos, int yPos, int radius, int direction) 
-	{
+
+	private float xPos;
+	private float yPos;
+	private float velocity;
+	private float direction;
+	private float radius;
+
+	private PImage image;
+
+	public Projectile(int xPos, int yPos, int radius, int direction) {
+		
+	}
+
+	public Projectile(float xPos, float yPos, float velocity, float direction, float radius, PImage image) { 
+
 		this.setXPos(xPos);
 		this.setYPos(yPos);
 		this.setRadius(radius);
-		this.color = Color.BLACK;
-		this.velocity = 10;
+
+		this.velocity = velocity;
 		this.direction = direction;
+		this.image = image;
 		
 	}
 	
-	public void setXPos(int x) 
+	public void setXPos(float x) 
 	{
 		xPos = x;
 	}
 	
-	public int getXPos() 
+	public float getXPos() 
 	{
 		return xPos;
 	}
 	
-	public void setYPos(int y) 
+	public void setYPos(float y) 
 	{
 		yPos = y;
 	}
 
 	
-	public int getYPos() 
+	public float getYPos() 
 	{
 		return yPos;
 	}
 	
-	public void setRadius(int r) 
+	public void setRadius(float r) 
 	{
 		radius = r;
 	}
 	
-	public int getRadius() 
+	public float getRadius() 
 	{
 		return radius;
 	}
 			
 	
-	public int getVel() 
+	public float getVel() 
 	{
 		return velocity;
 	}
 	
-	public void setVel(int vel) 
+	public void setVel(float vel) 
 	{
 		velocity = vel;
 	}
 	
-	public int getDirection() 
+	public float getDirection() 
 	{
 		return direction;
 	}
 	
-	public void setDirection(int dir) 
+	public void setDirection(float dir) 
 	{
 		direction = dir;
 	}
@@ -97,18 +107,16 @@ public class Projectile
 	
 	public void draw(PApplet board) {
 		
-		double xMove = velocity*Math.cos(Math.toRadians(direction));
-		double yMove = velocity*Math.sin(Math.toRadians(direction));
+		float xMove = velocity*PApplet.cos(direction);
+		float yMove = velocity*PApplet.sin(direction);
 		
 		xPos += xMove;
-		yPos -= yMove;
-		
+		yPos += yMove;
 		board.pushMatrix();
-		board.pushStyle();
-		board.fill(color.getRed(), color.getGreen(), color.getBlue());
-		board.ellipse(xPos, yPos, radius, radius);
+		board.translate(xPos, yPos);
+		board.rotate(direction);
+		board.image(image, -radius, -radius,radius * 2, radius * 2);
 		board.popMatrix();
-		board.popStyle();
 	}
 
 }
