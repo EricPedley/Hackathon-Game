@@ -41,40 +41,46 @@ public class Character {
 	
 	public void moveRight(PApplet marker) {
 		direction=1;
-		int tileX = (int)(hitbox.x+hitbox.width)/Room.TILE_SIZE;
-		int tileY1 = (int)Math.ceil(hitbox.y/Room.TILE_SIZE);
-		int tileY2 = (int)Math.ceil((hitbox.y+hitbox.height)/Room.TILE_SIZE);
-		if(environment.tileAt(tileX,tileY1).getType() == 0)
+		int tileX = (int)Math.floor((getHitbox().x+getHitbox().width)/Room.TILE_SIZE);
+		int tileY1 = (int)Math.floor((getHitbox().y+speed)/Room.TILE_SIZE);
+		int tileY2 = tileY1+1;
+		int tileY3 = (int)Math.floor((hitbox.y+hitbox.height-speed)/Room.TILE_SIZE);
+		if(environment.tileAt(tileX,tileY1).getType() < 9)
 			return;
-		else if(environment.tileAt(tileX,tileY2).getType() == 0)
+		else if(environment.tileAt(tileX,tileY2).getType() < 9)
+			return;
+		else if(environment.tileAt(tileX,tileY3).getType() < 9)
 			return;
 		else
 			hitbox.x+=speed;
-		marker.rect(tileX*Room.TILE_SIZE,tileY1*Room.TILE_SIZE,Room.TILE_SIZE,Room.TILE_SIZE);
-		marker.rect(tileX*Room.TILE_SIZE,tileY2*Room.TILE_SIZE,Room.TILE_SIZE,Room.TILE_SIZE);
 	}
 	
 	public void moveLeft(PApplet marker) {
 		direction=0;
 		int tileX = (int)hitbox.x/Room.TILE_SIZE;
-		int tileY1 = (int)Math.ceil(hitbox.y/Room.TILE_SIZE);
-		int tileY2 = (int)Math.ceil((hitbox.y+hitbox.height)/Room.TILE_SIZE);
-		
-		if(environment.tileAt(tileX,tileY1).getType() == 0)
+		int tileY1 = (int)Math.floor((getHitbox().y+speed)/Room.TILE_SIZE);
+		int tileY2 = tileY1+1;
+		int tileY3 = (int)Math.floor((hitbox.y+hitbox.height-speed)/Room.TILE_SIZE);
+		if(environment.tileAt(tileX,tileY1).getType() < 9)
 			return;
-		else if(environment.tileAt(tileX,tileY2).getType() == 0)
+		else if(environment.tileAt(tileX,tileY2).getType() < 9)
+			return;
+		else if(environment.tileAt(tileX,tileY3).getType() < 9)
 			return;
 		else
 			hitbox.x-=speed;
 	}
 	
 	public void moveUp(PApplet marker) {
-		int tileY = (int)hitbox.y/Room.TILE_SIZE;
-		int tileX1 = (int) Math.ceil(hitbox.x/Room.TILE_SIZE);
-		int tileX2 = (int) Math.ceil((hitbox.x+hitbox.width)/Room.TILE_SIZE);
-		if(environment.tileAt(tileX1,tileY).getType() == 0) {
+		int tileY = (int)(hitbox.y)/Room.TILE_SIZE;
+		int tileX1 = (int) Math.floor((hitbox.x+(1-2*direction)*speed)/Room.TILE_SIZE);
+		int tileX2 = tileX1+1;
+		int tileX3 = (int) Math.floor((hitbox.x+hitbox.width-speed)/Room.TILE_SIZE);
+		if(environment.tileAt(tileX1,tileY).getType() < 9) {
 			return;
-		}else if(environment.tileAt(tileX2,tileY).getType() == 0) {
+		}else if(environment.tileAt(tileX2,tileY).getType() < 9) {
+			return;
+		}else if(environment.tileAt(tileX3,tileY).getType() < 9) {
 			return;
 		}else
 			hitbox.y-=speed;
@@ -82,13 +88,16 @@ public class Character {
 	
 	public void moveDown(PApplet marker) {
 		int tileY = (int)(hitbox.y+hitbox.height)/Room.TILE_SIZE;
-		int tileX1 = (int) Math.ceil(hitbox.x/Room.TILE_SIZE);
-		int tileX2 = (int) Math.ceil((hitbox.x+hitbox.width)/Room.TILE_SIZE);
-		if(environment.tileAt(tileX1,tileY).getType() == 0)
+		int tileX1 = (int) Math.floor((hitbox.x+(1-2*direction)*speed)/Room.TILE_SIZE);
+		int tileX2 = tileX1+1;
+		int tileX3 = (int) Math.floor((hitbox.x+hitbox.width-speed)/Room.TILE_SIZE);
+		if(environment.tileAt(tileX1,tileY).getType() < 9) {
 			return;
-		else if(environment.tileAt(tileX2,tileY).getType() == 0)
+		}else if(environment.tileAt(tileX2,tileY).getType() < 9) {
 			return;
-		else
+		}else if(environment.tileAt(tileX3,tileY).getType() < 9) {
+			return;
+		}else
 			hitbox.y+=speed;
 	}
 	
