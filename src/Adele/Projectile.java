@@ -12,6 +12,7 @@ public class Projectile
 	private int direction;
 	private int radius;
 	private Color color;
+	boolean[] keys = new boolean[500];
 	
 	
 	public Projectile(int xPos, int yPos, int radius, int direction) 
@@ -75,6 +76,21 @@ public class Projectile
 	public void setDirection(int dir) 
 	{
 		direction = dir;
+	}
+	
+	public Projectile shoot() {
+		
+		return new Projectile(0, 50, 20, 0);
+		
+		
+	}
+	
+	public void keyPressed() {
+		keys[hashCode()]=true;
+	}
+	
+	public void keyReleased() {
+		keys[hashCode()]=false;
 	}
 	
 	
