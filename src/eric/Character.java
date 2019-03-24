@@ -41,7 +41,6 @@ public class Character {
 	
 	public void shoot(double targetX, double targetY, boolean isHero) {
 		double angle = Math.atan((targetY-hitbox.y-50)/(targetX-hitbox.x-69*direction));
-		System.out.println(Math.toDegrees(angle));
 		if((targetX-hitbox.x-69*direction)<0)
 			angle+=Math.PI;
 		environment.addProjectile(new Projectile((float)hitbox.x+69*direction,(float)hitbox.y+50,10,(float)angle,10, environment.bulletImage),isHero);

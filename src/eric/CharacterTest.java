@@ -44,16 +44,19 @@ public class CharacterTest extends PApplet {
 		transY+=startY-(float)h.getHitbox().y;
 		if(h.getHitbox().x<width/2) {
 			translate((float)(h.getHitbox().x-width/2),0);
-			
+			transX+=(float)(h.getHitbox().x-width/2);
 		}
 		if(h.getHitbox().y<height/2) {
 			translate(0,(float)(h.getHitbox().y-height/2));
+			transY+=(float)(h.getHitbox().y-height/2);
 		}
 		if(r.getX()*Room.TILE_SIZE-h.getHitbox().x<width/2) {
 			translate((float)(-(r.getX()*Room.TILE_SIZE-h.getHitbox().x)+width/2),0);
+			transX+=(float)(-(r.getX()*Room.TILE_SIZE-h.getHitbox().x)+width/2);
 		}
 		if(r.getY()*Room.TILE_SIZE-h.getHitbox().y<height/2) {
 			translate(0,(float)(-(r.getY()*Room.TILE_SIZE-h.getHitbox().y)+height/2));
+			transY+=(float)(-(r.getY()*Room.TILE_SIZE-h.getHitbox().y)+height/2);
 		}
 		background(255);
 		r.draw(this);
@@ -69,7 +72,8 @@ public class CharacterTest extends PApplet {
 	}
 	
 	public void mouseClicked() {
-		h.shoot(mouseX, mouseY, true);
+		System.out.println(transX);
+		h.shoot(mouseX-transX, mouseY-transY, true);
 	}
 	
 	public static void main(String[] args) {
