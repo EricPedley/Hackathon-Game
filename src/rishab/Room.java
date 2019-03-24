@@ -76,7 +76,7 @@ public class Room {
 		tileIndices[15] = new Tile(p.loadImage("Images"+fs+"Map"+fs+"Floor"+fs+"BigTileBottomLeft.gif"),0);
 		tileIndices[16] = new Tile(p.loadImage("Images"+fs+"Map"+fs+"Floor"+fs+"BigTileBottomRight.gif"),0);	tileIndices[17] = new Tile(p.loadImage("Images"+fs+"Map"+fs+"Floor"+fs+"BigTileTopLeft.gif"),0);
 		tileIndices[18] = new Tile(p.loadImage("Images"+fs+"Map"+fs+"Floor"+fs+"BigTileTopRight.gif"),0);
-	tileIndices[19]=new Tile(p.loadImage("Images"+fs+"Map"+fs+"Floor"+fs+"1Tile.gif"),2);
+		tileIndices[19] = new Tile(p.loadImage("Images"+fs+"Map"+fs+"Floor"+fs+"BigTileTopLeft.gif"),2);
 
 	}
 	
