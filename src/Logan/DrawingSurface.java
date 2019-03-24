@@ -33,7 +33,7 @@ public class DrawingSurface extends PApplet {
 		images[0] = this.loadImage("Images" + fs + "Projectiles" + fs + "Red Projectile.gif");
 		images[1] = this.loadImage("Images" + fs + "Projectiles" + fs + "Green Projectile.gif");
 		images[2] = this.loadImage("Images" + fs + "Projectiles" + fs + "Purple Star.gif");
-		boss = new Boss(200, 200, images, 50, 50, loadImage("Images" + fs + "Characters" + fs + "Boss" + fs + "Octocat.gif"));
+		boss = new Boss(200, 200, 50, 50);
 		//projectiles.add(new Projectile(50, 50, 0, 5, this.loadImage("Images" + fs + "Projectiles" + fs + "Red Projectile.gif")));
 
 		//size(0,0,PApplet.P3D);

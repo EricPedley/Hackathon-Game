@@ -36,7 +36,7 @@ public class Boss {
 	public void draw(PApplet p, ArrayList<Projectile> projectiles) {
 		x = p.width / 2;
 		y = p.height / 2;
-		p.image(ImageLoader.BOSS_PILLAR, x - p.width/6, y + p.width/6 , width * 2 / 3, height * 2);
+		p.image(ImageLoader.BOSS_PILLAR, x - p.width/6, y + p.width/6 , width * 4 / 5, height * 2);
 		p.image(ImageLoader.BOSS, x - width / 2, y - height / 2, width, height);
 		p.pushStyle();
 		p.stroke(0);

@@ -18,6 +18,6 @@ public class ImageLoader {
 		MAIN_CHARACTER_RIGHT = p
 				.loadImage("Images" + fs + "Characters" + fs + "Main Character" + fs + "Main Character Right.gif");
 		BOSS_PILLAR = p.loadImage("Images" + fs + "Characters" + fs + "Boss" + fs + "Pillar.gif");
-		BOSS = p.loadImage("Images" + fs + "Characters" + fs + "Boss" + fs + "Boss.gif");
+		BOSS = p.loadImage("Images" + fs + "Characters" + fs + "Boss" + fs + "Octocat.gif");
 	}
 }
