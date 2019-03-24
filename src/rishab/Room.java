@@ -37,13 +37,19 @@ public class Room {
 		enemyProjectiles = new ArrayList<Projectile>();
 		enemies = new ArrayList<Enemy>();
 		PImage[] enemyImages = {};
+		
+		bulletImage = ImageLoader.RED_PROJECTILE;
+		readData("Levels"+fs+"Boss.txt");
 		for(int c=0;c<numEnemies;c++) {
 			//System.out.println(numEnemies);
-			enemies.add(new Enemy(Math.random()*x*TILE_SIZE,Math.random()*y*TILE_SIZE,(int) (Math.random() * 2), this));
+			
+			enemies.add(new Enemy(Math.random()*(x-4)*TILE_SIZE  + 2 * TILE_SIZE,Math.random()*(y-4)*TILE_SIZE  + 2 * TILE_SIZE,(int) (Math.random() * 2), this));
 		}
-		bulletImage = ImageLoader.RED_PROJECTILE;
-		readData("Levels"+fs+"Level"+levelNumber+".txt");
 		
+	}
+	
+	public void setHero(Hero h) {
+		this.h= h;
 	}
 	
 	// Methods
@@ -166,6 +172,10 @@ public class Room {
 		return y;
 	}
 	
+	public ArrayList<Projectile> getEnemyProjectiles(){
+		return this.enemyProjectiles;
+	}
+	
 	public void draw(PApplet p) {
 		
 		p.pushMatrix();
@@ -185,17 +195,26 @@ public class Room {
 			enemies.get(i).act(h, myProjectiles);
 
 			
-			if(enemies.get(i).isDead())
+			if(enemies.get(i).isDead()) {
 				enemies.remove(i);
-			else
+				h.setHp(h.getHp() + 1);
+			} else
 				enemies.get(i).draw(p);
 		}
+		
+		
+		for(int i = 0; i < enemyProjectiles.size(); i++) {
+			h.checkHit(enemyProjectiles.get(i));
+		}
+		
 		for(Projectile proj: myProjectiles) {
 			proj.draw(p);
 		}
 		for(Projectile proj: enemyProjectiles) {
 			proj.draw(p);
+			
 		}
+		
 	}
 	
 	public Hero getHero() {

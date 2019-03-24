@@ -13,9 +13,12 @@ public class BossRoom extends Room {
 		boss = new Boss();
 	}
 	
+	public void setHero(Hero h) {
+		super.setHero(h);
+	}
 	public void draw(PApplet p) {
 		super.draw(p);
-		boss.draw(p, super.getMyProjectiles());
+		boss.draw(p, super.getEnemyProjectiles());
 	}
 	
 	
