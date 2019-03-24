@@ -17,7 +17,7 @@ public class Room {
 	
 	private int[][] tileType;
 	private int x = 42, y = 15;
-	private Tile[] tileIndices = new Tile[19];
+	private Tile[] tileIndices = new Tile[20];
 	private ArrayList<Projectile> myProjectiles;
 	private ArrayList<Projectile> enemyProjectiles;
 	private ArrayList<Enemy> enemies;
@@ -42,12 +42,12 @@ public class Room {
 			enemies.add(new Enemy(Math.random()*x*TILE_SIZE,Math.random()*y*TILE_SIZE,(int) (Math.random() * 2), this));
 		}
 		bulletImage = ImageLoader.RED_PROJECTILE;
-		readData("Levels"+fs+"Level"+levelNumber+".txt");
+		readData("Levels"+fs+"Level"+1+".txt");
 		
 	}
 	
 	// Methods
-	/*public void assignIndices(PApplet p) {
+	public void assignIndices(PApplet p) {
 		tileIndices[0] = new Tile(p.loadImage("Images"+fs+"Map"+fs+"Wall"+fs+"LeftRockWall.gif"),1);
 		tileIndices[1] = new Tile(p.loadImage("Images"+fs+"Map"+fs+"Wall"+fs+"RightRockWall.gif"),1);
 		tileIndices[2] = new Tile(p.loadImage("Images"+fs+"Map"+fs+"Wall"+fs+"RockTopFront.gif"),1);
@@ -68,7 +68,7 @@ public class Room {
 		tileIndices[18] = new Tile(p.loadImage("Images"+fs+"Map"+fs+"Floor"+fs+"BigTileTopRight.gif"),0);
 	tileIndices[19]=new Tile(p.loadImage("Images"+fs+"Map"+fs+"Floor"+fs+"1Tile.gif"),2);
 
-	}*/
+	}
 	
 	/*public void assignTiles() {
 		
