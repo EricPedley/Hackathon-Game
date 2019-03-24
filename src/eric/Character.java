@@ -19,9 +19,9 @@ public class Character {
 	public Character(double x, double y, double width, double height, PImage image, Room env) {
 		img = image;
 		hitbox = new Rectangle(x,y,width,height);
-		hp=10;
+		hp=15;
 		environment = env;
-		speed=10;
+		speed=15;
 	}
 	
 	public void setHp(int hp) {
@@ -42,7 +42,7 @@ public class Character {
 		marker.noFill();
 		marker.rect((float)(hitbox.x-20),(float)(hitbox.y-30),100,20);
 		marker.fill(0,255,0);
-		marker.rect((float)(hitbox.x-20),(float)(hitbox.y-30),hp/10f*100,20);
+		marker.rect((float)(hitbox.x-20),(float)(hitbox.y-30),hp/15f*100,20);
 		marker.popMatrix();
 	}
 	
