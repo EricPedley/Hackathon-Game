@@ -6,7 +6,7 @@ import Phys2D.Rectangle;
 import processing.core.PApplet;
 import processing.core.PImage;
 import rishab.Room;
-
+//t
 
 public class Character {
 	private int direction; //0=left 1 = right
