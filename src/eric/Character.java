@@ -43,7 +43,7 @@ public class Character {
 		double angle = Math.atan((targetY-hitbox.y)/(targetX-hitbox.x));
 		if((targetX-hitbox.x)<0)
 			angle+=Math.PI;
-		environment.addProjectile(new Projectile((float)hitbox.x,(float)hitbox.y,(float)angle,10),isHero);
+		environment.addProjectile(new Projectile((float)hitbox.x,(float)hitbox.y,10,(float)angle,10, environment.bulletImage),isHero);
 	}
 	
 	public void moveRight() {
