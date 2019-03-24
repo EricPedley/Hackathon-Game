@@ -17,14 +17,12 @@ public class Boss {
 	private boolean direction;
 	private float width, height;
 	
-	private PImage[] images;
-	private PImage image;
 	
-	public Boss(int x, int y, PImage[] images, int width, int height, PImage image) {
+	
+	public Boss(int x, int y, int width, int height) {
 		this.x = x;
 		this.y = y;
-		this.images = images;
-		this.image = image;
+		
 		this.width = width;
 		this.height = height;
 	}
@@ -38,7 +36,8 @@ public class Boss {
 	public void draw(PApplet p, ArrayList<Projectile> projectiles) {
 		x = p.width / 2;
 		y = p.height / 2;
-		p.image(image, x - width / 2, y - height / 2, width, height);
+		p.image(ImageLoader.BOSS_PILLAR, x - p.width/6, y + p.width/6 , width * 2 / 3, height * 2);
+		p.image(ImageLoader.BOSS, x - width / 2, y - height / 2, width, height);
 		p.pushStyle();
 		p.stroke(0);
 		
@@ -56,25 +55,25 @@ public class Boss {
 			if(frame < 1200) {
 				if(frame % 10 == 0) {
 					if(direction) {
-						projectiles.add(new Projectile(x, y, 1, frame/100f, 5, images[0]));
-						projectiles.add(new Projectile(x, y, 1, frame/100f + PApplet.TWO_PI/5, 5, images[0]));
-						projectiles.add(new Projectile(x, y, 1, frame/100f + PApplet.TWO_PI/5 * 2 , 5, images[0]));
-						projectiles.add(new Projectile(x, y, 1, frame/100f + PApplet.TWO_PI/5 * 3, 5, images[0]));
-						projectiles.add(new Projectile(x, y, 1, frame/100f + PApplet.TWO_PI/5 * 4, 5, images[0]));
+						projectiles.add(new Projectile(x, y, 1, frame/100f, 5, ImageLoader.RED_PROJECTILE));
+						projectiles.add(new Projectile(x, y, 1, frame/100f + PApplet.TWO_PI/5, 5, ImageLoader.RED_PROJECTILE));
+						projectiles.add(new Projectile(x, y, 1, frame/100f + PApplet.TWO_PI/5 * 2 , 5, ImageLoader.RED_PROJECTILE));
+						projectiles.add(new Projectile(x, y, 1, frame/100f + PApplet.TWO_PI/5 * 3, 5, ImageLoader.RED_PROJECTILE));
+						projectiles.add(new Projectile(x, y, 1, frame/100f + PApplet.TWO_PI/5 * 4, 5, ImageLoader.RED_PROJECTILE));
 					} else {
-						projectiles.add(new Projectile(x, y, 1, -frame/100f, 5, images[0]));
-						projectiles.add(new Projectile(x, y, 1, -frame/100f + PApplet.TWO_PI/5, 5, images[0]));
-						projectiles.add(new Projectile(x, y, 1, -frame/100f + PApplet.TWO_PI/5 * 2 , 5, images[0]));
-						projectiles.add(new Projectile(x, y, 1, -frame/100f + PApplet.TWO_PI/5 * 3, 5, images[0]));
-						projectiles.add(new Projectile(x, y, 1, -frame/100f + PApplet.TWO_PI/5 * 4, 5, images[0]));
+						projectiles.add(new Projectile(x, y, 1, -frame/100f, 5, ImageLoader.RED_PROJECTILE));
+						projectiles.add(new Projectile(x, y, 1, -frame/100f + PApplet.TWO_PI/5, 5, ImageLoader.RED_PROJECTILE));
+						projectiles.add(new Projectile(x, y, 1, -frame/100f + PApplet.TWO_PI/5 * 2 , 5, ImageLoader.RED_PROJECTILE));
+						projectiles.add(new Projectile(x, y, 1, -frame/100f + PApplet.TWO_PI/5 * 3, 5, ImageLoader.RED_PROJECTILE));
+						projectiles.add(new Projectile(x, y, 1, -frame/100f + PApplet.TWO_PI/5 * 4, 5, ImageLoader.RED_PROJECTILE));
 					}
 				}
 				if(frame % 60 == 0) {
 					float dir = PApplet.atan((p.mouseY - y)/ (p.mouseX - x));
 					if(p.mouseX < x)
 						dir += PApplet.PI;
-					projectiles.add(new SineProjectile(x, y, 0.5f, dir, 5, images[1], 20, 120, 0));
-					projectiles.add(new SineProjectile(x, y, 0.5f, dir, 5, images[1], -20, 120, 0));
+					projectiles.add(new SineProjectile(x, y, 0.5f, dir, 5, ImageLoader.GREEN_PROJECTILE, 20, 120, 0));
+					projectiles.add(new SineProjectile(x, y, 0.5f, dir, 5, ImageLoader.GREEN_PROJECTILE, -20, 120, 0));
 				}
 				if(frame % 120 == 0)
 					if(Math.random() < 0.25)
@@ -82,19 +81,23 @@ public class Boss {
 				
 			} else {
 				if(frame % 240 == 0) {
-					projectiles.add(new Projectile(x, y, 0.5f, 0, 20, images[2]));
-					projectiles.add(new Projectile(x, y, 0.5f, PApplet.HALF_PI, 20, images[2]));
-					projectiles.add(new Projectile(x, y, 0.5f, PApplet.PI, 20, images[2]));
-					projectiles.add(new Projectile(x, y, 0.5f, PApplet.HALF_PI * 3, 20, images[2]));
+					projectiles.add(new Projectile(x, y, 0.5f, 0, 20, ImageLoader.PURPLE_STAR));
+					projectiles.add(new Projectile(x, y, 0.5f, PApplet.HALF_PI, 20, ImageLoader.PURPLE_STAR));
+					projectiles.add(new Projectile(x, y, 0.5f, PApplet.PI, 20, ImageLoader.PURPLE_STAR));
+					projectiles.add(new Projectile(x, y, 0.5f, PApplet.HALF_PI * 3, 20, ImageLoader.PURPLE_STAR));
 				} else if(frame % 120 == 0) {
-					projectiles.add(new Projectile(x, y, 0.5f, PApplet.QUARTER_PI, 20, images[2]));
-					projectiles.add(new Projectile(x, y, 0.5f, PApplet.HALF_PI + PApplet.QUARTER_PI, 20, images[2]));
-					projectiles.add(new Projectile(x, y, 0.5f, PApplet.PI + PApplet.QUARTER_PI, 20, images[2]));
-					projectiles.add(new Projectile(x, y, 0.5f, PApplet.HALF_PI * 3 + PApplet.QUARTER_PI, 20, images[2]));
+					projectiles.add(new Projectile(x, y, 0.5f, PApplet.QUARTER_PI, 20, ImageLoader.PURPLE_STAR));
+					projectiles.add(new Projectile(x, y, 0.5f, PApplet.HALF_PI + PApplet.QUARTER_PI, 20, ImageLoader.PURPLE_STAR));
+					projectiles.add(new Projectile(x, y, 0.5f, PApplet.PI + PApplet.QUARTER_PI, 20, ImageLoader.PURPLE_STAR));
+					projectiles.add(new Projectile(x, y, 0.5f, PApplet.HALF_PI * 3 + PApplet.QUARTER_PI, 20, ImageLoader.PURPLE_STAR));
 				}
-				if(frame % 120) {
-					projectiles.addAll(new Projectile(x, y, 2, ))
+				if(frame % 120 == 0) {
+					float dir = PApplet.atan((p.mouseY - y)/ (p.mouseX - x));
+					projectiles.add(new Projectile(x, y, 3, dir,10, ImageLoader.YELLOW_STAR));
+					projectiles.add(new Projectile(x, y, 3, dir + PApplet.THIRD_PI/2,10, ImageLoader.YELLOW_STAR));
+					projectiles.add(new Projectile(x, y, 3, dir - PApplet.THIRD_PI/2,10, ImageLoader.YELLOW_STAR));
 				}
+				frame = frame % 2400;
 			}
 		}
 		frame++;
