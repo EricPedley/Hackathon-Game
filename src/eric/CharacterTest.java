@@ -50,6 +50,10 @@ public class CharacterTest extends PApplet {
 		keys[keyCode]=false;
 	}
 	
+	public void mouseClicked() {
+		h.shoot(mouseX, mouseY, true);
+	}
+	
 	public static void main(String[] args) {
 		CharacterTest drawing = new CharacterTest();
 		PApplet.runSketch(new String[]{""}, drawing);
