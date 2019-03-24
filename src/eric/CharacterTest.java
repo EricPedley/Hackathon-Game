@@ -26,27 +26,20 @@ public class CharacterTest extends PApplet {
 	
 	public void draw() {
 		if(keys[37]) {
-			h.moveLeft(this);
+			h.moveLeft();
 		}  if(keys[38]) {
-			h.moveUp(this);
+			h.moveUp();
 		}  if(keys[39]) {
-			h.moveRight(this);
+			h.moveRight();
 		}  if(keys[40]) {
-			h.moveDown(this);
+			h.moveDown();
 		}
 		translate(startX-(float)h.getHitbox().x,startY-(float)h.getHitbox().y);
+		if(h.getHitbox().x<width/2)
+			translate(0,startY-(float)h.getHitbox().y);
 		background(255);
 		r.draw(this);
 		h.draw(this);
-		int tileY = (int)h.getHitbox().y/Room.TILE_SIZE;
-		int tileX1 = (int) Math.floor((h.getHitbox().x+5)/Room.TILE_SIZE);
-		int tileX2 = tileX1+1;
-		int tileX3 = (int) Math.floor((h.getHitbox().x+h.getHitbox().width-5)/Room.TILE_SIZE);
-		noFill();
-		h.getHitbox().draw(this);
-		rect(tileX1*Room.TILE_SIZE,tileY*Room.TILE_SIZE,Room.TILE_SIZE,Room.TILE_SIZE);
-		rect(tileX2*Room.TILE_SIZE,tileY*Room.TILE_SIZE,Room.TILE_SIZE,Room.TILE_SIZE);
-		rect(tileX3*Room.TILE_SIZE,tileY*Room.TILE_SIZE,Room.TILE_SIZE,Room.TILE_SIZE);
 	}
 	
 	public void keyPressed() {

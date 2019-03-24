@@ -39,7 +39,14 @@ public class Character {
 		environment.deleteProjectile(p);
 	}
 	
-	public void moveRight(PApplet marker) {
+	public void shoot(double targetX, double targetY) {
+		double angle = Math.atan((targetY-hitbox.y)/(targetX-hitbox.x));
+		if((targetX-hitbox.x)<0)
+			angle+=Math.PI;
+		environment.addProjectile(new Projectile((float)hitbox.x,(float)hitbox.y,(float)angle,10));
+	}
+	
+	public void moveRight() {
 		direction=1;
 		int tileX = (int)Math.floor((getHitbox().x+getHitbox().width)/Room.TILE_SIZE);
 		int tileY1 = (int)Math.floor((getHitbox().y+speed)/Room.TILE_SIZE);
@@ -55,7 +62,7 @@ public class Character {
 			hitbox.x+=speed;
 	}
 	
-	public void moveLeft(PApplet marker) {
+	public void moveLeft() {
 		direction=0;
 		int tileX = (int)hitbox.x/Room.TILE_SIZE;
 		int tileY1 = (int)Math.floor((getHitbox().y+speed)/Room.TILE_SIZE);
@@ -71,7 +78,7 @@ public class Character {
 			hitbox.x-=speed;
 	}
 	
-	public void moveUp(PApplet marker) {
+	public void moveUp() {
 		int tileY = (int)(hitbox.y)/Room.TILE_SIZE;
 		int tileX1 = (int) Math.floor((hitbox.x+(1-2*direction)*speed)/Room.TILE_SIZE);
 		int tileX2 = tileX1+1;
@@ -86,7 +93,7 @@ public class Character {
 			hitbox.y-=speed;
 	}
 	
-	public void moveDown(PApplet marker) {
+	public void moveDown() {
 		int tileY = (int)(hitbox.y+hitbox.height)/Room.TILE_SIZE;
 		int tileX1 = (int) Math.floor((hitbox.x+(1-2*direction)*speed)/Room.TILE_SIZE);
 		int tileX2 = tileX1+1;
