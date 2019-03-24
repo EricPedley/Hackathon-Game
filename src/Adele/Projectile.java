@@ -7,6 +7,11 @@ import processing.core.PImage;
 
 public class Projectile 
 {
+
+	
+	private Color color;
+	boolean[] keys = new boolean[500];
+
 	private float xPos;
 	private float yPos;
 	private float velocity;
@@ -14,10 +19,13 @@ public class Projectile
 	private float radius;
 
 	private PImage image;
-	
-	
-	public Projectile(float xPos, float yPos, float velocity, float direction, float radius, PImage image) 
-	{
+
+	public Projectile(int xPos, int yPos, int radius, int direction) {
+		
+	}
+
+	public Projectile(float xPos, float yPos, float velocity, float direction, float radius, PImage image) { 
+
 		this.setXPos(xPos);
 		this.setYPos(yPos);
 		this.setRadius(radius);
@@ -79,6 +87,23 @@ public class Projectile
 	{
 		direction = dir;
 	}
+	
+	public Projectile shoot() {
+		
+		return new Projectile(0, 50, 20, 0);
+		
+		
+	}
+	
+	public void keyPressed() {
+		keys[hashCode()]=true;
+	}
+	
+	public void keyReleased() {
+		keys[hashCode()]=false;
+	}
+	
+	
 	
 	public void draw(PApplet board) {
 		
