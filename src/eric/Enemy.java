@@ -12,15 +12,26 @@ public class Enemy extends Character {
 	 * image.width,image.height,image,env); // TODO Auto-generated constructor stub
 	 * }
 	 */
-	public Enemy(double x, double y, Room env) {
+	
+	private int type;
+	public Enemy(double x, double y, int type, Room env) {
 		super(x, y, 23*3,30*3,null, env);
+		this.type = type;
 	}
 	
 	public void draw(PApplet marker) {
-		if(super.getDirection()==0) {
-			super.img=ImageLoader.MINION_LEFT;
+		if(type == 0) {
+			if(super.getDirection()==0) {
+				super.img=ImageLoader.MINION_LEFT;
+			} else {
+				super.img=ImageLoader.MINION_RIGHT;
+			}
 		} else {
-			super.img=ImageLoader.MINION_RIGHT;
+			if(super.getDirection()==0) {
+				super.img=ImageLoader.SLIME_LEFT;
+			} else {
+				super.img=ImageLoader.SLIME_RIGHT;
+			}
 		}
 		img.resize((int)hitbox.width, (int)hitbox.height);
 		super.draw(marker);

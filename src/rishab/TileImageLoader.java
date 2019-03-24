@@ -6,6 +6,7 @@ import processing.core.PImage;
 public class TileImageLoader {
 	public static Tile[] tileIndices;
 	public static void loadTileImages(PApplet p) {
+		System.out.println("hi");
 		String fs = System.getProperty("file.separator");
 		tileIndices = new Tile[20];
 		tileIndices[0] = new Tile(p.loadImage("Images"+fs+"Map"+fs+"Wall"+fs+"LeftRockWall.gif"),1);

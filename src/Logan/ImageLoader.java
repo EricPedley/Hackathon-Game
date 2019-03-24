@@ -10,8 +10,8 @@ public class ImageLoader {
 
 	public static void setUp(PApplet p) {
 		
-		SLIME_RIGHT =p.loadImage("Images" + fs + "Characters" + fs + "Enemy" + fs + "SLIME Right.gif");
-		SLIME_LEFT =p.loadImage("Images" + fs + "Characters" + fs + "Enemy" + fs + "SLIME Left.gif");
+		SLIME_RIGHT =p.loadImage("Images" + fs + "Characters" + fs + "Enemy" + fs + "Slime Right.gif");
+		SLIME_LEFT =p.loadImage("Images" + fs + "Characters" + fs + "Enemy" + fs + "Slime Left.gif");
 		MINION_RIGHT =p.loadImage("Images" + fs + "Characters" + fs + "Enemy" + fs + "Minion Knight Right.gif");
 		MINION_LEFT =p.loadImage("Images" + fs + "Characters" + fs + "Enemy" + fs + "Minion Knight Left.gif");
 		RED_PROJECTILE = p.loadImage("Images" + fs + "Projectiles" + fs + "Red Projectile.gif");
@@ -24,5 +24,6 @@ public class ImageLoader {
 				.loadImage("Images" + fs + "Characters" + fs + "Main Character" + fs + "Main Character Right.gif");
 		BOSS_PILLAR = p.loadImage("Images" + fs + "Characters" + fs + "Boss" + fs + "Pillar.gif");
 		BOSS = p.loadImage("Images" + fs + "Characters" + fs + "Boss" + fs + "Octocat.gif");
+		
 	}
 }

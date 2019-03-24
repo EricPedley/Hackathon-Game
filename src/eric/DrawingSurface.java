@@ -4,6 +4,7 @@ import processing.core.PApplet;
 import processing.core.PImage;
 import rishab.Map;
 import rishab.Room;
+import rishab.TileImageLoader;
 
 public class DrawingSurface extends PApplet {
 
@@ -14,10 +15,12 @@ public class DrawingSurface extends PApplet {
 		private float startX = 300, startY = 200;
 		
 		public void setup() {
+			TileImageLoader.loadTileImages(this);
 			 PImage leftImage = loadImage("Images"+fS+"Characters"+fS+"Main Character"+fS+"Main Character Left.gif");
 			 PImage rightImage = loadImage("Images"+fS+"Characters"+fS+"Main Character"+fS+"Main Character Right.gif");
 			m=new Map();
-			h = new Hero(startX,startY,leftImage,rightImage,m.getActiveRoom());
+			h = new Hero(startX,startY,m.getActiveRoom());
+			
 		}
 		
 		public void draw() {

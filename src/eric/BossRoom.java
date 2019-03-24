@@ -10,7 +10,7 @@ public class BossRoom extends Room {
 	
 	public BossRoom() {
 		super(25, -1);
-		boss = new Boss(300,200,100,100);
+		boss = new Boss();
 	}
 	
 	public void draw(PApplet p) {

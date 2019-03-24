@@ -114,5 +114,9 @@ public class Character {
 		return hitbox;
 	}
 	
+	public void move() {
+		
+	}
+	
 	
 }
