@@ -14,7 +14,7 @@ public class Projectile
 	private Color color;
 	
 	
-	public Projectile(int xPos, int yPos, int direction, int radius) 
+	public Projectile(int xPos, int yPos, int radius, int direction) 
 	{
 		this.setXPos(xPos);
 		this.setYPos(yPos);
@@ -76,6 +76,8 @@ public class Projectile
 	{
 		direction = dir;
 	}
+	
+	
 	
 	public void draw(PApplet board) {
 		
