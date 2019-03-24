@@ -106,7 +106,7 @@ public class BossTest extends PApplet {
 		}
 	}
 	
-	public void keyPressed() {
+	public void keyPressed() {//fuck this
 		keys[keyCode]=true;
 	}
 	
