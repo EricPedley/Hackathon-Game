@@ -79,7 +79,7 @@ public class Room {
 		tileIndices[19] = new Tile(p.loadImage("Images"+fs+"Map"+fs+"Floor"+fs+"BigTileTopLeft.gif"),2);
 
 	}
-	
+	//h
 	/*public void assignTiles() {
 		
 		for(int rows = 0; rows < x;rows++) {
