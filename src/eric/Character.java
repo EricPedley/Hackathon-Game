@@ -39,11 +39,11 @@ public class Character {
 		environment.deleteProjectile(p);
 	}
 	
-	public void moveRight() {
+	public void moveRight(PApplet marker) {
 		direction=1;
 		int tileX = (int)(hitbox.x+hitbox.width)/Room.TILE_SIZE;
 		int tileY1 = (int)Math.ceil(hitbox.y/Room.TILE_SIZE);
-		int tileY2 = (int)Math.ceil((hitbox.y+hitbox.height)/Room.TILE_SIZE);
+		int tileY2 = (int)Math.floor((hitbox.y+hitbox.height)/Room.TILE_SIZE);
 		if(environment.tileAt(tileX,tileY1).getType() == 0)
 			return;
 		else if(environment.tileAt(tileX,tileY2).getType() == 0)
@@ -52,11 +52,11 @@ public class Character {
 			hitbox.x+=speed;
 	}
 	
-	public void moveLeft() {
+	public void moveLeft(PApplet marker) {
 		direction=0;
 		int tileX = (int)hitbox.x/Room.TILE_SIZE;
 		int tileY1 = (int)Math.ceil(hitbox.y/Room.TILE_SIZE);
-		int tileY2 = (int)Math.ceil((hitbox.y+hitbox.height)/Room.TILE_SIZE);
+		int tileY2 = (int)Math.floor((hitbox.y+hitbox.height)/Room.TILE_SIZE);
 		if(environment.tileAt(tileX,tileY1).getType() == 0)
 			return;
 		else if(environment.tileAt(tileX,tileY2).getType() == 0)
@@ -65,10 +65,10 @@ public class Character {
 			hitbox.x-=speed;
 	}
 	
-	public void moveUp() {
+	public void moveUp(PApplet marker) {
 		int tileY = (int)hitbox.y/Room.TILE_SIZE;
 		int tileX1 = (int) Math.ceil(hitbox.x/Room.TILE_SIZE);
-		int tileX2 = (int) Math.ceil((hitbox.x+hitbox.width)/Room.TILE_SIZE);
+		int tileX2 = (int) Math.floor((hitbox.x+hitbox.width)/Room.TILE_SIZE);
 		if(environment.tileAt(tileX1,tileY).getType() == 0) {
 			return;
 		}else if(environment.tileAt(tileX2,tileY).getType() == 0) {
@@ -77,16 +77,20 @@ public class Character {
 			hitbox.y-=speed;
 	}
 	
-	public void moveDown() {
+	public void moveDown(PApplet marker) {
 		int tileY = (int)(hitbox.y+hitbox.height)/Room.TILE_SIZE;
 		int tileX1 = (int) Math.ceil(hitbox.x/Room.TILE_SIZE);
-		int tileX2 = (int) Math.ceil((hitbox.x+hitbox.width)/Room.TILE_SIZE);
+		int tileX2 = (int) Math.floor((hitbox.x+hitbox.width)/Room.TILE_SIZE);
 		if(environment.tileAt(tileX1,tileY).getType() == 0)
 			return;
 		else if(environment.tileAt(tileX2,tileY).getType() == 0)
 			return;
 		else
 			hitbox.y+=speed;
+	}
+	
+	public Rectangle getHitbox() {
+		return hitbox;
 	}
 	
 	
