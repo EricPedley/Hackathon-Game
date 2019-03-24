@@ -15,6 +15,7 @@ public class CharacterTest extends PApplet {
 	Hero h;
 	Room r;
 	float startX = 300, startY = 200;
+	float transX, transY;
 	
 	public void setup() {//character image is 14x36 pixels
 		 PImage leftImage = loadImage("Images"+fS+"Characters"+fS+"Main Character"+fS+"Main Character Left.gif");
@@ -25,6 +26,10 @@ public class CharacterTest extends PApplet {
 	}
 	
 	public void draw() {
+		transX=0;
+		transY=0;
+		translate(0,-11);
+		transY-=11;
 		if(keys[37]) {
 			h.moveLeft();
 		}  if(keys[38]) {
@@ -35,8 +40,21 @@ public class CharacterTest extends PApplet {
 			h.moveDown();
 		}
 		translate(startX-(float)h.getHitbox().x,startY-(float)h.getHitbox().y);
-		if(h.getHitbox().x<width/2)
-			translate(0,startY-(float)h.getHitbox().y);
+		transX+=startX-(float)h.getHitbox().x;
+		transY+=startY-(float)h.getHitbox().y;
+		if(h.getHitbox().x<width/2) {
+			translate((float)(h.getHitbox().x-width/2),0);
+			
+		}
+		if(h.getHitbox().y<height/2) {
+			translate(0,(float)(h.getHitbox().y-height/2));
+		}
+		if(r.getX()*Room.TILE_SIZE-h.getHitbox().x<width/2) {
+			translate((float)(-(r.getX()*Room.TILE_SIZE-h.getHitbox().x)+width/2),0);
+		}
+		if(r.getY()*Room.TILE_SIZE-h.getHitbox().y<height/2) {
+			translate(0,(float)(-(r.getY()*Room.TILE_SIZE-h.getHitbox().y)+height/2));
+		}
 		background(255);
 		r.draw(this);
 		h.draw(this);
