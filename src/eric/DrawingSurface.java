@@ -22,10 +22,13 @@ public class DrawingSurface extends PApplet {
 			 PImage rightImage = loadImage("Images"+fS+"Characters"+fS+"Main Character"+fS+"Main Character Right.gif");
 			m=new Map();
 			h = new Hero(startX,startY,m.getActiveRoom());
+			h.setHp(10);
+			h.setSpeed(5);
 			
 		}
 		
 		public void draw() {
+			System.out.println("t");
 			translate(0,-11);
 			handleKeys();
 			translate(startX-(float)h.getHitbox().x,startY-(float)h.getHitbox().y);
@@ -43,6 +46,7 @@ public class DrawingSurface extends PApplet {
 			background(255);
 			r.draw(this);
 			h.draw(this);
+			
 		}
 		
 		public void handleKeys() {

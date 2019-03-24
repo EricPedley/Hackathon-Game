@@ -19,13 +19,17 @@ public class Character {
 	public Character(double x, double y, double width, double height, PImage image, Room env) {
 		img = image;
 		hitbox = new Rectangle(x,y,width,height);
-		hp=5;
+		hp=10;
 		environment = env;
-		speed=5;
+		speed=10;
 	}
 	
 	public void setHp(int hp) {
 		this.hp = hp;
+	}
+	
+	public void setSpeed(int speed) {
+		this.speed = speed;
 	}
 	
 	public int getHp() {
@@ -42,9 +46,10 @@ public class Character {
 	
 	public void checkHit(Projectile p) {
 		if(hitbox.isTouching(new Circle(p.getXPos(),p.getYPos(),p.getRadius()))) {
+			environment.deleteProjectile(p);
 			hp--;
 		}
-		environment.deleteProjectile(p);
+		
 	}
 	
 	public void shoot(double targetX, double targetY, boolean isHero) {

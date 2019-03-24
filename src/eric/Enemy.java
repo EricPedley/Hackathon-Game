@@ -51,7 +51,7 @@ public class Enemy extends Character {
 		}
 			
 		if(moveFrame > 60) {
-			if(Math.random() < 0.05) {
+			if(Math.random() < 0.1) {
 				direction = (int)(Math.random() * 9);
 				moveFrame = 0;
 			}
@@ -59,6 +59,8 @@ public class Enemy extends Character {
 		move();
 		for(int i = 0; i < proj.size(); i++)
 			super.checkHit(proj.get(i));
+		shootFrame++;
+		moveFrame++;
 	}
 	
 	public boolean isDead() {
